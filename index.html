@@ -2,50 +2,120 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Do' Mak's Moda</title>
-  <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
 </head>
 <body>
   <header>
-    <h1>Bienvenue chez Do' Mak's Moda</h1>
-    <p>Confection de robes, voiles, chemises et vestes</p>
+    <h1>Do' Mak's Moda</h1>
+    <nav>
+      <a href="#accueil">Accueil</a>
+      <a href="#apropos">À propos</a>
+      <a href="#services">Services</a>
+      <a href="#boutique">Boutique</a>
+      <a href="#contact">Contact</a>
+      <a href="#panier">Panier 🛒</a>
+    </nav>
   </header>
-  <section class="gallery">
-    <div class="item">
-      <img src="https://via.placeholder.com/200x250?text=Robe+de+soirée" alt="Robe de soirée">
-      <p>Robe de soirée - 45$</p>
-      <a href="https://wa.me/243816809506?text=Je souhaite commander cette robe de soirée" target="_blank">Commander</a>
-    </div>
-    <div class="item">
-      <img src="https://via.placeholder.com/200x250?text=Chemise" alt="Chemise">
-      <p>Chemise - 20$</p>
-      <a href="https://wa.me/243816809506?text=Je souhaite commander cette chemise" target="_blank">Commander</a>
-    </div>
-    <div class="item">
-      <img src="https://via.placeholder.com/200x250?text=Voile" alt="Voile">
-      <p>Voile - 15$</p>
-      <a href="https://wa.me/243816809506?text=Je souhaite commander ce voile" target="_blank">Commander</a>
-    </div>
-    <div class="item">
-      <img src="https://via.placeholder.com/200x250?text=Veste" alt="Veste">
-      <p>Veste - 35$</p>
-      <a href="https://wa.me/243816809506?text=Je souhaite commander cette veste" target="_blank">Commander</a>
+
+  <section id="accueil">
+    <h2>Bienvenue</h2>
+    <p>Votre maison de couture spécialisée dans les robes, voiles, chemises et vestes sur mesure.</p>
+  </section>
+
+  <section id="apropos">
+    <h2>À propos</h2>
+    <p>Do' Mak's Moda est fondée par Dorcas Makalamba. Nous allions élégance, spiritualité et savoir-faire pour sublimer chaque cliente.</p>
+  </section>
+
+  <section id="services">
+    <h2>Nos Services</h2>
+    <ul>
+      <li>Formation professionnelle en haute couture</li>
+      <li>Coupe et couture sans patron</li>
+      <li>Confection de vêtements de cérémonie</li>
+      <li>Stage professionnel</li>
+    </ul>
+  </section>
+
+  <section id="boutique">
+    <h2>Boutique</h2>
+    <div class="gallery">
+      <div class="item">
+        <img src="https://images.unsplash.com/photo-1602810318448-84abdb91f9d6?auto=format&fit=crop&w=400&q=80" alt="Robe de soirée">
+        <h3>Robe de soirée</h3>
+        <p>45$</p>
+        <button onclick="ajouterAuPanier('Robe de soirée', 45)">Ajouter au panier</button>
+      </div>
+      <div class="item">
+        <img src="https://images.unsplash.com/photo-1600181954290-47694bfae674?auto=format&fit=crop&w=400&q=80" alt="Chemise">
+        <h3>Chemise</h3>
+        <p>20$</p>
+        <button onclick="ajouterAuPanier('Chemise', 20)">Ajouter au panier</button>
+      </div>
+      <div class="item">
+        <img src="https://images.unsplash.com/photo-1615390902830-16ebdf6bc304?auto=format&fit=crop&w=400&q=80" alt="Voile">
+        <h3>Voile</h3>
+        <p>15$</p>
+        <button onclick="ajouterAuPanier('Voile', 15)">Ajouter au panier</button>
+      </div>
+      <div class="item">
+        <img src="https://images.unsplash.com/photo-1610809987555-16a761ba7c0d?auto=format&fit=crop&w=400&q=80" alt="Veste">
+        <h3>Veste</h3>
+        <p>35$</p>
+        <button onclick="ajouterAuPanier('Veste', 35)">Ajouter au panier</button>
+      </div>
     </div>
   </section>
-  <section>
-    <h2>Commander par e-mail</h2>
+
+  <section id="panier">
+    <h2>Mon Panier</h2>
+    <ul id="liste-panier"></ul>
+    <p><strong>Total :</strong> <span id="total">0</span>$</p>
+    <a id="whatsapp-link" href="#" target="_blank">Commander via WhatsApp</a>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Téléphone : +243 816 809 506</p>
+    <p>Email : dorcasmakalamba028@gmail.com</p>
     <form action="mailto:dorcasmakalamba028@gmail.com" method="post" enctype="text/plain">
       <input type="text" name="Nom" placeholder="Votre nom" required><br>
       <input type="email" name="Email" placeholder="Votre e-mail" required><br>
-      <textarea name="Message" placeholder="Détail de la commande" required></textarea><br>
+      <textarea name="Message" placeholder="Votre message" required></textarea><br>
       <button type="submit">Envoyer</button>
     </form>
   </section>
+
   <footer>
-    <p>Contact : +243 816 809 506 | dorcasmakalamba028@gmail.com</p>
+    <p>© 2025 Do' Mak's Moda — Tous droits réservés.</p>
   </footer>
-  <script src="app.js"></script>
+
+  <script>
+    const panier = [];
+    function ajouterAuPanier(article, prix) {
+      panier.push({ article, prix });
+      afficherPanier();
+    }
+
+    function afficherPanier() {
+      const liste = document.getElementById("liste-panier");
+      const totalEl = document.getElementById("total");
+      const whatsappLink = document.getElementById("whatsapp-link");
+      liste.innerHTML = "";
+      let total = 0;
+      let message = "Bonjour, je souhaite commander :%0A";
+      panier.forEach(item => {
+        total += item.prix;
+        liste.innerHTML += `<li>${item.article} - ${item.prix}$</li>`;
+        message += `- ${item.article} (${item.prix}$)%0A`;
+      });
+      totalEl.textContent = total;
+      message += `%0ATotal: ${total}$`;
+      whatsappLink.href = "https://wa.me/243816809506?text=" + message;
+    }
+  </script>
 </body>
 </html>
