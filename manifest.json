@@ -1,0 +1,15 @@
+{
+  "name": "Do' Mak's Moda",
+  "short_name": "Moda",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "description": "Site de couture de Dorcas Makalamba",
+  "icons": [
+    {
+      "src": "https://via.placeholder.com/192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
