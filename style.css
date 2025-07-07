@@ -52,7 +52,7 @@ h2 {
   background: white;
   padding: 10px;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   position: relative;
 }
@@ -110,7 +110,8 @@ form {
   gap: 10px;
 }
 
-form input, form textarea {
+form input,
+form textarea {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -144,6 +145,8 @@ ul#liste-panier {
   text-decoration: none;
   font-weight: bold;
 }
+
+/* Réalisations (images + vidéos) */
 #realisations .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -155,13 +158,13 @@ ul#liste-panier {
   background: white;
   border-radius: 12px;
   padding: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
 #realisations img,
-{
-  width: 75%;
+#realisations video {
+  width: 100%;
   height: 180px;
   object-fit: cover;
   border-radius: 10px;
@@ -172,15 +175,20 @@ ul#liste-panier {
   font-size: 0.9rem;
   color: #555;
 }
+
+/* Vidéo avec icône ▶️ */
 .video-wrapper {
   position: relative;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .video-wrapper video {
   width: 100%;
-  height: 180px;
+  height: 220px;
   object-fit: cover;
   border-radius: 10px;
+  display: block;
 }
 
 .video-wrapper .play-icon {
@@ -188,8 +196,9 @@ ul#liste-panier {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 36px;
+  font-size: 48px;
   color: rgba(255, 255, 255, 0.85);
   pointer-events: none;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
-  }
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
