@@ -160,7 +160,7 @@ ul#liste-panier {
 }
 
 #realisations img,
-#realisations video {
+{
   width: 75%;
   height: 180px;
   object-fit: cover;
