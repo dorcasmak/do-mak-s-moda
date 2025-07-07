@@ -41,7 +41,6 @@ h2 {
   margin-bottom: 15px;
 }
 
-
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -50,34 +49,24 @@ h2 {
 }
 
 .item {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  text-align: center;
-  padding: 1rem;
-}
-
-.item img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.item {
   background: white;
   padding: 10px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   text-align: center;
+  position: relative;
 }
 
 .item img {
   width: 100%;
-  border-radius: 10px;
   height: 200px;
   object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.item img:hover {
+  transform: scale(1.05);
 }
 
 .item h3 {
@@ -87,6 +76,18 @@ h2 {
 .item p {
   font-weight: bold;
   margin: 0 0 10px;
+}
+
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: crimson;
+  color: white;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 8px;
+  font-weight: bold;
 }
 
 button {
