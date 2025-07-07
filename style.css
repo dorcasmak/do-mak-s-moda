@@ -161,8 +161,8 @@ ul#liste-panier {
 
 #realisations img,
 #realisations video {
-  width: 65%;
-  height: 100px;
+  width: 75%;
+  height: 110px;
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 0.5rem;
