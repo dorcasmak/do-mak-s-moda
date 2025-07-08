@@ -12,6 +12,16 @@ section { padding: 30px 15px; max-width: 1000px; margin: auto; }
 
 h2 { color: #5e4b8b; margin-bottom: 15px; }
 
+#accueil {
+  background: url('acceuil-bg.jpg') no-repeat center center/cover;
+  color: white;
+  padding: 60px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 #accueil { background: url('acceuil-bg.jpg') center/cover no-repeat; padding: 60px 15px; color: white; text-align: center; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
 
 .accueil-contenu { background-color: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 12px; max-width: 800px; margin: auto; }
