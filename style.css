@@ -240,3 +240,50 @@ ul#liste-panier {
   z-index: 2;
   max-width: 90%;
 }
+section:not(#accueil) {
+  display: none;
+}
+
+body.accueil-only section#accueil {
+  height: auto;
+  min-height: 100vh;
+  background-image: url("accueil-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  position: relative;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+body.accueil-only #accueil::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+body.accueil-only #accueil h2,
+body.accueil-only #accueil p {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  text-align: center;
+  max-width: 90%;
+}
+
+body.accueil-only footer {
+  position: relative;
+  z-index: 2;
+  background-color: transparent;
+  color: white;
+  padding: 1rem;
+  }
