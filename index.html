@@ -160,5 +160,37 @@
       whatsappLink.href = "https://wa.me/243816809506?text=" + message;
     }
   </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const sections = document.querySelectorAll("section");
+    const liens = document.querySelectorAll("nav a");
+
+    // Masquer toutes les sections sauf Accueil
+    sections.forEach(section => {
+      if (section.id !== "accueil") {
+        section.style.display = "none";
+      }
+    });
+
+    // Gérer le clic sur les liens du menu
+    liens.forEach(lien => {
+      lien.addEventListener("click", function (e) {
+        e.preventDefault();
+        const cible = this.getAttribute("href").substring(1);
+
+        sections.forEach(section => {
+          if (section.id === cible) {
+            section.style.display = "block";
+          } else {
+            section.style.display = "none";
+          }
+        });
+
+        // Mettre à jour l'URL sans recharger
+        history.pushState(null, "", "#" + cible);
+      });
+    });
+  });
+  </script>
 </body>
 </html>
