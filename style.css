@@ -6,10 +6,9 @@
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f2f7;
   color: #333;
+  background-color: #ffffff;
 }
-
 header {
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
