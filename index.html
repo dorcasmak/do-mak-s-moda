@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html><html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -14,84 +13,119 @@
       <a href="#accueil">Accueil</a>
       <a href="#apropos">À propos</a>
       <a href="#services">Services</a>
-      <a href="#realisations">Réalisations</a>
-      <a href="#boutique">Boutique</a>
+      <a href="#formations">Formations</a>
       <a href="#tarifs">Tarifs</a>
-      <a href="#formation">Calendrier</a>
       <a href="#inscription">Inscription</a>
+      <a href="#boutique">Boutique</a>
       <a href="#temoignages">Témoignages</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
       <a href="#panier">Panier 🛒</a>
     </nav>
-  </header>
-
-  <section id="accueil">
+  </header>  <section id="accueil">
     <h2>Bienvenue chez Do' Mak's Moda</h2>
-    <p>Votre maison de couture spécialisée dans les robes, voiles, chemises et vestes sur mesure.</p>
-    <p>Découvrez nos collections, formez-vous avec des techniques de couture modernes, ou passez commande pour des créations uniques adaptées à votre style.</p>
-    <p>Consultez nos <a href="#tarifs">tarifs</a>, explorez notre <a href="#formation">calendrier de formation</a>, ou remplissez la <a href="#inscription">fiche d'inscription</a> pour rejoindre nos programmes.</p>
-    <p>Des témoignages de clientes, des réponses à vos questions fréquentes, et un contact direct avec notre équipe vous attendent.</p>
-  </section>
-
-  <!-- Les autres sections suivent ici -->
-  <!-- Exemple : #apropos, #services, #realisations, #boutique, etc. -->
-
-  <!-- Tu peux coller ici les sections existantes comme tu les avais avant,
-       ou me demander de tout regrouper en un fichier unique complet (avec JS/CSS inclus) -->
-
-  <!-- Exemple placeholder pour les nouvelles sections -->
-  <section id="tarifs">
+    <p>Maison de couture élégante fondée par Dorcas Makalamba, spécialisée dans les vêtements de cérémonie, la formation en haute couture et bien plus.</p>
+    <p>Email : dorcasmakalamba028@gmail.com</p>
+  </section>  <section id="apropos">
+    <h2>À propos</h2>
+    <p>Notre mission est de former, transformer et sublimer la femme africaine par le style et le savoir-faire couturier.</p>
+  </section>  <section id="services">
+    <h2>Nos Services</h2>
+    <ul>
+      <li>Formation professionnelle en haute couture</li>
+      <li>Coupe et couture sans patron</li>
+      <li>Confection de vêtements de cérémonie</li>
+      <li>Stage professionnel</li>
+    </ul>
+  </section>  <section id="formations">
+    <h2>Calendrier des Formations</h2>
+    <p>Nos formations se déroulent en trois sessions par an : Janvier, Mai et Septembre. Chaque session dure 3 mois.</p>
+  </section>  <section id="tarifs">
     <h2>Tarifs</h2>
-    <p>Nos tarifs sont accessibles et adaptés à chaque niveau de formation et type de prestation. Contactez-nous pour un devis personnalisé.</p>
-  </section>
-
-  <section id="formation">
-    <h2>Calendrier de Formation</h2>
-    <p>Les formations débutent chaque mois. Prochaine session : <strong>1er Août 2025</strong>. Durée : 3 mois.</p>
-  </section>
-
-  <section id="inscription">
+    <ul>
+      <li>Formation complète : 100$</li>
+      <li>Atelier couture libre : 25$/mois</li>
+      <li>Confection robe de cérémonie : à partir de 45$</li>
+    </ul>
+  </section>  <section id="inscription">
     <h2>Fiche d'inscription</h2>
-    <form action="mailto:dorcasmakalamba028@gmail.com" method="post" enctype="text/plain">
-      <input type="text" name="Nom" placeholder="Nom complet" required />
-      <input type="email" name="Email" placeholder="Email" required />
-      <input type="tel" name="Téléphone" placeholder="Téléphone" required />
-      <textarea name="Motivation" placeholder="Pourquoi souhaitez-vous suivre cette formation ?" required></textarea>
+    <form>
+      <input type="text" placeholder="Nom complet" required>
+      <input type="email" placeholder="Adresse e-mail" required>
+      <input type="tel" placeholder="Téléphone" required>
+      <select required>
+        <option value="">Choisir une session</option>
+        <option value="janvier">Janvier</option>
+        <option value="mai">Mai</option>
+        <option value="septembre">Septembre</option>
+      </select>
+      <textarea placeholder="Message ou besoin spécifique"></textarea>
       <button type="submit">Envoyer</button>
     </form>
-  </section>
-
-  <section id="temoignages">
+  </section>  <section id="boutique">
+    <h2>Boutique</h2>
+    <div class="gallery">
+      <div class="item">
+        <img src="robe.jpg" alt="Robe de soirée">
+        <h3>Robe de soirée</h3>
+        <p>45$</p>
+        <button onclick="ajouterAuPanier('Robe de soirée', 45)">Ajouter au panier</button>
+      </div>
+      <!-- autres articles -->
+    </div>
+  </section>  <section id="temoignages">
     <h2>Témoignages</h2>
-    <blockquote>“Grâce à Do' Mak's Moda, j'ai appris à coudre sans patron. Une vraie révélation !” — Marie K.</blockquote>
-    <blockquote>“Une équipe bienveillante, une pédagogie claire et de vrais résultats.” — Aline M.</blockquote>
-  </section>
-
-  <section id="faq">
-    <h2>FAQ</h2>
+    <blockquote>"Grâce à Do' Mak's Moda, je couds mes propres vêtements !" — Amina</blockquote>
+    <blockquote>"Un encadrement professionnel et un accueil chaleureux." — Grâce</blockquote>
+  </section>  <section id="faq">
+    <h2>Questions Fréquentes (FAQ)</h2>
     <details>
-      <summary>Quels sont les prérequis pour suivre une formation ?</summary>
-      <p>Aucun prérequis. Débutantes et confirmées sont les bienvenues.</p>
+      <summary>Quels sont les horaires ?</summary>
+      <p>Du lundi au vendredi, de 9h à 15h.</p>
     </details>
     <details>
       <summary>Fournissez-vous le matériel ?</summary>
-      <p>Oui, le matériel de base est fourni au centre. Vous pouvez aussi apporter le vôtre.</p>
+      <p>Oui, le tissu de base et les outils sont inclus dans l'inscription.</p>
     </details>
-    <details>
-      <summary>Puis-je commander à distance ?</summary>
-      <p>Oui, via WhatsApp avec les informations nécessaires (taille, modèle, etc.).</p>
-    </details>
-  </section>
-
-  <section id="contact">
+  </section>  <section id="panier">
+    <h2>Mon Panier</h2>
+    <ul id="liste-panier"></ul>
+    <p><strong>Total :</strong> <span id="total">0</span>$</p>
+    <a id="whatsapp-link" href="#" target="_blank">Commander via WhatsApp</a>
+  </section>  <section id="contact">
     <h2>Contact</h2>
     <p>Téléphone : +243 816 809 506</p>
     <p>Email : dorcasmakalamba028@gmail.com</p>
-  </section>
-
-  <footer>
+    <form action="mailto:dorcasmakalamba028@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="Nom" placeholder="Votre nom" required><br>
+      <input type="email" name="Email" placeholder="Votre e-mail" required><br>
+      <textarea name="Message" placeholder="Votre message" required></textarea><br>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>  <footer>
     <p>© 2025 Do' Mak's Moda — Tous droits réservés.</p>
-  </footer>
-</body>
+  </footer>  <script>
+    const panier = [];
+    function ajouterAuPanier(article, prix) {
+      panier.push({ article, prix });
+      afficherPanier();
+    }
+
+    function afficherPanier() {
+      const liste = document.getElementById("liste-panier");
+      const totalEl = document.getElementById("total");
+      const whatsappLink = document.getElementById("whatsapp-link");
+      liste.innerHTML = "";
+      let total = 0;
+      let message = "Bonjour, je souhaite commander :%0A";
+      panier.forEach(item => {
+        total += item.prix;
+        liste.innerHTML += `<li>${item.article} - ${item.prix}$</li>`;
+        message += `- ${item.article} (${item.prix}$)%0A`;
+      });
+      totalEl.textContent = total;
+      message += `%0ATotal: ${total}$`;
+      whatsappLink.href = "https://wa.me/243816809506?text=" + message;
+    }
+  </script></body>
 </html>
