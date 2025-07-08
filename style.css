@@ -179,7 +179,7 @@ ul#liste-panier {
 /* Vidéo avec icône ▶️ */
 .video-wrapper {
   position: relative;
-  border-radius: 10px;
+  border-radius: 5px;
   overflow: hidden;
 }
 
