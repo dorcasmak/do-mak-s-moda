@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -7,29 +8,43 @@
   <link rel="manifest" href="manifest.json" />
 </head>
 <body class="accueil-only">
+
   <header>
     <h1>Do' Mak's Moda</h1>
     <nav>
       <a href="#accueil">Accueil</a>
       <a href="#apropos">À propos</a>
       <a href="#services">Services</a>
-      <a href="#formations">Formations</a>
-      <a href="#tarifs">Tarifs</a>
-      <a href="#inscription">Inscription</a>
+      <a href="#realisations">Réalisations</a>
       <a href="#boutique">Boutique</a>
-      <a href="#temoignages">Témoignages</a>
-      <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
       <a href="#panier">Panier 🛒</a>
     </nav>
-  </header>  <section id="accueil">
-    <h2>Bienvenue chez Do' Mak's Moda</h2>
-    <p>Maison de couture élégante fondée par Dorcas Makalamba, spécialisée dans les vêtements de cérémonie, la formation en haute couture et bien plus.</p>
-    <p>Email : dorcasmakalamba028@gmail.com</p>
-  </section>  <section id="apropos">
+  </header>
+
+  <!-- SECTION ACCUEIL -->
+  <section id="accueil">
+    <div class="accueil-contenu">
+      <h2>Bienvenue chez Do' Mak's Moda</h2>
+      <p>Nous allions élégance, créativité et savoir-faire pour sublimer chaque cliente à travers des vêtements sur mesure.</p>
+      <div class="accueil-galerie">
+        <img src="photo.jpg" alt="Robe 1" />
+        <img src="photo1.jpg" alt="Robe 2" />
+        <img src="photo2.jpg" alt="Robe 3" />
+        <img src="photo3.jpg" alt="Robe 4" />
+        <img src="photo4.jpg" alt="Robe 5" />
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION À PROPOS -->
+  <section id="apropos">
     <h2>À propos</h2>
-    <p>Notre mission est de former, transformer et sublimer la femme africaine par le style et le savoir-faire couturier.</p>
-  </section>  <section id="services">
+    <p>Do' Mak's Moda est fondée par Dorcas Makalamba. Nous allions élégance, spiritualité et savoir-faire pour sublimer chaque cliente.</p>
+  </section>
+
+  <!-- SECTION SERVICES -->
+  <section id="services">
     <h2>Nos Services</h2>
     <ul>
       <li>Formation professionnelle en haute couture</li>
@@ -37,62 +52,85 @@
       <li>Confection de vêtements de cérémonie</li>
       <li>Stage professionnel</li>
     </ul>
-  </section>  <section id="formations">
-    <h2>Calendrier des Formations</h2>
-    <p>Nos formations se déroulent en trois sessions par an : Janvier, Mai et Septembre. Chaque session dure 3 mois.</p>
-  </section>  <section id="tarifs">
-    <h2>Tarifs</h2>
-    <ul>
-      <li>Formation complète : 100$</li>
-      <li>Atelier couture libre : 25$/mois</li>
-      <li>Confection robe de cérémonie : à partir de 45$</li>
-    </ul>
-  </section>  <section id="inscription">
-    <h2>Fiche d'inscription</h2>
-    <form>
-      <input type="text" placeholder="Nom complet" required>
-      <input type="email" placeholder="Adresse e-mail" required>
-      <input type="tel" placeholder="Téléphone" required>
-      <select required>
-        <option value="">Choisir une session</option>
-        <option value="janvier">Janvier</option>
-        <option value="mai">Mai</option>
-        <option value="septembre">Septembre</option>
-      </select>
-      <textarea placeholder="Message ou besoin spécifique"></textarea>
-      <button type="submit">Envoyer</button>
-    </form>
-  </section>  <section id="boutique">
+  </section>
+
+  <!-- SECTION RÉALISATIONS -->
+  <section id="realisations">
+    <h2>Nos Réalisations</h2>
+    <div class="gallery">
+      <div class="item">
+        <video controls>
+          <source src="video1.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la vidéo.
+        </video>
+        <p>Coupe Robe droite 2024</p>
+      </div>
+      <div class="item">
+        <video controls>
+          <source src="video2.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la vidéo.
+        </video>
+        <p>Collation 2025</p>
+      </div>
+      <div class="item">
+        <img src="photo.jpg" alt="Robe cérémonie" />
+        <p>Robe cérémonie perlée</p>
+      </div>
+      <div class="item">
+        <img src="photo2.jpg" alt="Veste" />
+        <p>Veste élégante sur mesure</p>
+      </div>
+      <div class="item">
+        <video controls>
+          <source src="video3.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la vidéo.
+        </video>
+        <p>Technique coupe à main levée</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION BOUTIQUE -->
+  <section id="boutique">
     <h2>Boutique</h2>
     <div class="gallery">
       <div class="item">
-        <img src="voile.jpg" alt="Robe de soirée">
+        <img src="robe.jpg" alt="Robe de soirée">
         <h3>Robe de soirée</h3>
         <p>45$</p>
         <button onclick="ajouterAuPanier('Robe de soirée', 45)">Ajouter au panier</button>
       </div>
-      <!-- autres articles -->
+      <div class="item">
+        <img src="chemise.jpg" alt="Chemise">
+        <h3>Chemise</h3>
+        <p>20$</p>
+        <button onclick="ajouterAuPanier('Chemise', 20)">Ajouter au panier</button>
+      </div>
+      <div class="item">
+        <img src="voile.jpg" alt="Voile">
+        <h3>Voile</h3>
+        <p>15$</p>
+        <button onclick="ajouterAuPanier('Voile', 15)">Ajouter au panier</button>
+      </div>
+      <div class="item">
+        <img src="veste.jpg" alt="Veste">
+        <h3>Veste</h3>
+        <p>35$</p>
+        <button onclick="ajouterAuPanier('Veste', 35)">Ajouter au panier</button>
+      </div>
     </div>
-  </section>  <section id="temoignages">
-    <h2>Témoignages</h2>
-    <blockquote>"Grâce à Do' Mak's Moda, je couds mes propres vêtements !" — Amina</blockquote>
-    <blockquote>"Un encadrement professionnel et un accueil chaleureux." — Grâce</blockquote>
-  </section>  <section id="faq">
-    <h2>Questions Fréquentes (FAQ)</h2>
-    <details>
-      <summary>Quels sont les horaires ?</summary>
-      <p>Du lundi au vendredi, de 9h à 15h.</p>
-    </details>
-    <details>
-      <summary>Fournissez-vous le matériel ?</summary>
-      <p>Oui, le tissu de base et les outils sont inclus dans l'inscription.</p>
-    </details>
-  </section>  <section id="panier">
+  </section>
+
+  <!-- SECTION PANIER -->
+  <section id="panier">
     <h2>Mon Panier</h2>
     <ul id="liste-panier"></ul>
     <p><strong>Total :</strong> <span id="total">0</span>$</p>
     <a id="whatsapp-link" href="#" target="_blank">Commander via WhatsApp</a>
-  </section>  <section id="contact">
+  </section>
+
+  <!-- SECTION CONTACT -->
+  <section id="contact">
     <h2>Contact</h2>
     <p>Téléphone : +243 816 809 506</p>
     <p>Email : dorcasmakalamba028@gmail.com</p>
@@ -102,9 +140,13 @@
       <textarea name="Message" placeholder="Votre message" required></textarea><br>
       <button type="submit">Envoyer</button>
     </form>
-  </section>  <footer>
+  </section>
+
+  <footer>
     <p>© 2025 Do' Mak's Moda — Tous droits réservés.</p>
-  </footer>  <script>
+  </footer>
+
+  <script>
     const panier = [];
     function ajouterAuPanier(article, prix) {
       panier.push({ article, prix });
@@ -127,5 +169,7 @@
       message += `%0ATotal: ${total}$`;
       whatsappLink.href = "https://wa.me/243816809506?text=" + message;
     }
-  </script></body>
+  </script>
+
+</body>
 </html>
