@@ -1,71 +1,97 @@
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Do' Mak's Moda</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
-  <style>
-    section:not(#accueil) {
-      display: none;
-    }
-    section.active {
-      display: block;
-      animation: fadeIn 0.6s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .scroll-down {
-      text-align: center;
-      font-size: 1.2em;
-      margin-top: 20px;
-      cursor: pointer;
-      color: #5e4b8b;
-    }
-  </style>
 </head>
 <body>
   <header>
     <h1>Do' Mak's Moda</h1>
     <nav>
-      <a href="#accueil" onclick="afficherSection('accueil')">Accueil</a>
-      <a href="#apropos" onclick="afficherSection('apropos')">À propos</a>
-      <a href="#services" onclick="afficherSection('services')">Services</a>
-      <a href="#realisations" onclick="afficherSection('realisations')">Réalisations</a>
-      <a href="#boutique" onclick="afficherSection('boutique')">Boutique</a>
-      <a href="#contact" onclick="afficherSection('contact')">Contact</a>
-      <a href="#panier" onclick="afficherSection('panier')">Panier 🛒</a>
+      <a href="#accueil">Accueil</a>
+      <a href="#apropos">À propos</a>
+      <a href="#services">Services</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#boutique">Boutique</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#formation">Calendrier</a>
+      <a href="#inscription">Inscription</a>
+      <a href="#temoignages">Témoignages</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="#panier">Panier 🛒</a>
     </nav>
-  </header>  <section id="accueil" class="active">
-    <h2>Bienvenue</h2>
+  </header>
+
+  <section id="accueil">
+    <h2>Bienvenue chez Do' Mak's Moda</h2>
     <p>Votre maison de couture spécialisée dans les robes, voiles, chemises et vestes sur mesure.</p>
-    <div class="scroll-down" onclick="afficherSection('apropos')">↓ Voir plus</div>
-  </section>  <section id="apropos">
-    <h2>À propos</h2>
-    <p>Do' Mak's Moda est fondée par Dorcas Makalamba. Nous allions élégance, spiritualité et savoir-faire pour sublimer chaque cliente.</p>
-  </section>  <section id="services">
-    <h2>Nos Services</h2>
-    <ul>
-      <li>Formation professionnelle en haute couture</li>
-      <li>Coupe et couture sans patron</li>
-      <li>Confection de vêtements de cérémonie</li>
-      <li>Stage professionnel</li>
-    </ul>
-  </section>  <!-- D'autres sections comme realisations, boutique, panier, contact ici -->  <footer>
+    <p>Découvrez nos collections, formez-vous avec des techniques de couture modernes, ou passez commande pour des créations uniques adaptées à votre style.</p>
+    <p>Consultez nos <a href="#tarifs">tarifs</a>, explorez notre <a href="#formation">calendrier de formation</a>, ou remplissez la <a href="#inscription">fiche d'inscription</a> pour rejoindre nos programmes.</p>
+    <p>Des témoignages de clientes, des réponses à vos questions fréquentes, et un contact direct avec notre équipe vous attendent.</p>
+  </section>
+
+  <!-- Les autres sections suivent ici -->
+  <!-- Exemple : #apropos, #services, #realisations, #boutique, etc. -->
+
+  <!-- Tu peux coller ici les sections existantes comme tu les avais avant,
+       ou me demander de tout regrouper en un fichier unique complet (avec JS/CSS inclus) -->
+
+  <!-- Exemple placeholder pour les nouvelles sections -->
+  <section id="tarifs">
+    <h2>Tarifs</h2>
+    <p>Nos tarifs sont accessibles et adaptés à chaque niveau de formation et type de prestation. Contactez-nous pour un devis personnalisé.</p>
+  </section>
+
+  <section id="formation">
+    <h2>Calendrier de Formation</h2>
+    <p>Les formations débutent chaque mois. Prochaine session : <strong>1er Août 2025</strong>. Durée : 3 mois.</p>
+  </section>
+
+  <section id="inscription">
+    <h2>Fiche d'inscription</h2>
+    <form action="mailto:dorcasmakalamba028@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="Nom" placeholder="Nom complet" required />
+      <input type="email" name="Email" placeholder="Email" required />
+      <input type="tel" name="Téléphone" placeholder="Téléphone" required />
+      <textarea name="Motivation" placeholder="Pourquoi souhaitez-vous suivre cette formation ?" required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+
+  <section id="temoignages">
+    <h2>Témoignages</h2>
+    <blockquote>“Grâce à Do' Mak's Moda, j'ai appris à coudre sans patron. Une vraie révélation !” — Marie K.</blockquote>
+    <blockquote>“Une équipe bienveillante, une pédagogie claire et de vrais résultats.” — Aline M.</blockquote>
+  </section>
+
+  <section id="faq">
+    <h2>FAQ</h2>
+    <details>
+      <summary>Quels sont les prérequis pour suivre une formation ?</summary>
+      <p>Aucun prérequis. Débutantes et confirmées sont les bienvenues.</p>
+    </details>
+    <details>
+      <summary>Fournissez-vous le matériel ?</summary>
+      <p>Oui, le matériel de base est fourni au centre. Vous pouvez aussi apporter le vôtre.</p>
+    </details>
+    <details>
+      <summary>Puis-je commander à distance ?</summary>
+      <p>Oui, via WhatsApp avec les informations nécessaires (taille, modèle, etc.).</p>
+    </details>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Téléphone : +243 816 809 506</p>
+    <p>Email : dorcasmakalamba028@gmail.com</p>
+  </section>
+
+  <footer>
     <p>© 2025 Do' Mak's Moda — Tous droits réservés.</p>
-  </footer>  <script>
-    function afficherSection(id) {
-      document.querySelectorAll('section').forEach(section => {
-        section.classList.remove('active');
-        section.style.display = 'none';
-      });
-      const sectionAffichee = document.getElementById(id);
-      if (sectionAffichee) {
-        sectionAffichee.style.display = 'block';
-        sectionAffichee.classList.add('active');
-      }
-    }
-  </script></body>
+  </footer>
+</body>
 </html>
