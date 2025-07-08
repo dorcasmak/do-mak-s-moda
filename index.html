@@ -5,23 +5,43 @@
   <title>Do' Mak's Moda</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
+  <style>
+    section:not(#accueil) {
+      display: none;
+    }
+    section.active {
+      display: block;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .scroll-down {
+      text-align: center;
+      font-size: 1.2em;
+      margin-top: 20px;
+      cursor: pointer;
+      color: #5e4b8b;
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>Do' Mak's Moda</h1>
     <nav>
-      <a href="#accueil">Accueil</a>
-      <a href="#apropos">À propos</a>
-      <a href="#services">Services</a>
-      <a href="#realisations">Réalisations</a>
-      <a href="#boutique">Boutique</a>
-      <a href="#contact">Contact</a>
-      <a href="#panier">Panier 🛒</a>
+      <a href="#accueil" onclick="afficherSection('accueil')">Accueil</a>
+      <a href="#apropos" onclick="afficherSection('apropos')">À propos</a>
+      <a href="#services" onclick="afficherSection('services')">Services</a>
+      <a href="#realisations" onclick="afficherSection('realisations')">Réalisations</a>
+      <a href="#boutique" onclick="afficherSection('boutique')">Boutique</a>
+      <a href="#contact" onclick="afficherSection('contact')">Contact</a>
+      <a href="#panier" onclick="afficherSection('panier')">Panier 🛒</a>
     </nav>
-  </header>  <section id="accueil" style="background-image: url('acceuil-bg.jpg'); background-size: cover; background-position: center; color: white; text-align: center; padding: 100px 20px;">
-    <h2>Bienvenue chez Do' Mak's Moda</h2>
-    <p>Élégance, savoir-faire, et spiritualité au service de la couture.</p>
-    <p>Explorez notre univers de créations uniques et de formations en haute couture.</p>
+  </header>  <section id="accueil" class="active">
+    <h2>Bienvenue</h2>
+    <p>Votre maison de couture spécialisée dans les robes, voiles, chemises et vestes sur mesure.</p>
+    <div class="scroll-down" onclick="afficherSection('apropos')">↓ Voir plus</div>
   </section>  <section id="apropos">
     <h2>À propos</h2>
     <p>Do' Mak's Moda est fondée par Dorcas Makalamba. Nous allions élégance, spiritualité et savoir-faire pour sublimer chaque cliente.</p>
@@ -33,59 +53,19 @@
       <li>Confection de vêtements de cérémonie</li>
       <li>Stage professionnel</li>
     </ul>
-  </section>  <section class="citation">
-    <blockquote>
-      “Une femme bien habillée rayonne de confiance et de grâce.”
-    </blockquote>
-  </section>  <section class="temoignages">
-    <h2>Ce que disent nos clientes</h2>
-    <div class="temoignage">
-      <p>“J’ai été éblouie par la robe que vous avez créée pour mon mariage. Merci pour votre patience et créativité.”</p>
-      <strong>— Merveille B.</strong>
-    </div>
-    <div class="temoignage">
-      <p>“Une formation qui m’a ouvert des portes ! Merci à Do’ Mak’s Moda pour ce professionnalisme.”</p>
-      <strong>— Grâce T.</strong>
-    </div>
-  </section>  <section class="faq">
-    <h2>Questions fréquentes</h2>
-    <div class="faq-item">
-      <h3>Quels types de vêtements réalisez-vous ?</h3>
-      <p>Nous confectionnons des robes, voiles, chemises, vestes et bien plus encore, selon vos mesures et préférences.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Est-ce possible de passer commande à distance ?</h3>
-      <p>Oui, grâce à WhatsApp ou email, nous pouvons échanger les détails et livrer selon votre localisation.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Proposez-vous des formations ?</h3>
-      <p>Oui, nous offrons des formations professionnelles en couture avec ou sans patron.</p>
-    </div>
-  </section>  <!-- Les sections Réalisations, Boutique, Panier, Contact, etc. restent identiques ici -->  <footer>
+  </section>  <!-- D'autres sections comme realisations, boutique, panier, contact ici -->  <footer>
     <p>© 2025 Do' Mak's Moda — Tous droits réservés.</p>
   </footer>  <script>
-    const panier = [];
-    function ajouterAuPanier(article, prix) {
-      panier.push({ article, prix });
-      afficherPanier();
-    }
-
-    function afficherPanier() {
-      const liste = document.getElementById("liste-panier");
-      const totalEl = document.getElementById("total");
-      const whatsappLink = document.getElementById("whatsapp-link");
-      liste.innerHTML = "";
-      let total = 0;
-      let message = "Bonjour, je souhaite commander :%0A";
-      panier.forEach(item => {
-        total += item.prix;
-        liste.innerHTML += `<li>${item.article} - ${item.prix}$</li>`;
-        message += `- ${item.article} (${item.prix}$)%0A`;
+    function afficherSection(id) {
+      document.querySelectorAll('section').forEach(section => {
+        section.classList.remove('active');
+        section.style.display = 'none';
       });
-      totalEl.textContent = total;
-      message += `%0ATotal: ${total}$`;
-      whatsappLink.href = "https://wa.me/243816809506?text=" + message;
+      const sectionAffichee = document.getElementById(id);
+      if (sectionAffichee) {
+        sectionAffichee.style.display = 'block';
+        sectionAffichee.classList.add('active');
+      }
     }
   </script></body>
 </html>
-
