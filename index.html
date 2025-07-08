@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -18,16 +19,21 @@
       <a href="#contact">Contact</a>
       <a href="#panier">Panier 🛒</a>
     </nav>
-  </header>  <section id="accueil" class="accueil-hero">
-    <div class="accueil-overlay">
-      <h2>Bienvenue chez Do' Mak's Moda</h2>
-      <p>Des créations sur mesure, pour révéler votre beauté et élégance avec passion et inspiration.</p>
-      <a href="#boutique" class="cta-button">Découvrir la boutique</a>
-    </div>
-  </section>  <section id="apropos">
+  </header>
+
+  <!-- ACCUEIL AMÉLIORÉ -->
+  <section id="accueil" class="active">
+    <h2>Bienvenue chez Do' Mak's Moda</h2>
+    <p>Élégance, créativité & formation en couture moderne.</p>
+    <a href="#boutique" class="btn-accueil">Découvrir la boutique</a>
+  </section>
+
+  <section id="apropos">
     <h2>À propos</h2>
     <p>Do' Mak's Moda est fondée par Dorcas Makalamba. Nous allions élégance, spiritualité et savoir-faire pour sublimer chaque cliente.</p>
-  </section>  <section id="services">
+  </section>
+
+  <section id="services">
     <h2>Nos Services</h2>
     <ul>
       <li>Formation professionnelle en haute couture</li>
@@ -35,7 +41,9 @@
       <li>Confection de vêtements de cérémonie</li>
       <li>Stage professionnel</li>
     </ul>
-  </section>  <section id="realisations">
+  </section>
+
+  <section id="realisations">
     <h2>Nos Réalisations</h2>
     <div class="gallery">
       <div class="item">
@@ -57,16 +65,8 @@
         <p>Robe cérémonie perlée</p>
       </div>
       <div class="item">
-        <img src="photo1.jpg" alt="Robe rose avec perles" />
-        <p>Robe cérémonie perlée</p>
-      </div>
-      <div class="item">
-        <img src="photo3.jpg" alt="Robe rose avec perles" />
-        <p>Robe cérémonie perlée</p>
-      </div>
-      <div class="item">
-        <img src="photo4.jpg" alt="Robe rose avec perles" />
-        <p>Robe cérémonie perlée</p>
+        <img src="photo1.jpg" alt="Robe cérémonie" />
+        <p>Robe cérémonie chic</p>
       </div>
       <div class="item">
         <video controls>
@@ -80,7 +80,9 @@
         <p>Veste sur mesure pour client VIP</p>
       </div>
     </div>
-  </section>  <section id="boutique">
+  </section>
+
+  <section id="boutique">
     <h2>Boutique</h2>
     <div class="gallery">
       <div class="item">
@@ -108,12 +110,16 @@
         <button onclick="ajouterAuPanier('Veste', 35)">Ajouter au panier</button>
       </div>
     </div>
-  </section>  <section id="panier">
+  </section>
+
+  <section id="panier">
     <h2>Mon Panier</h2>
     <ul id="liste-panier"></ul>
     <p><strong>Total :</strong> <span id="total">0</span>$</p>
     <a id="whatsapp-link" href="#" target="_blank">Commander via WhatsApp</a>
-  </section>  <section id="contact">
+  </section>
+
+  <section id="contact">
     <h2>Contact</h2>
     <p>Téléphone : +243 816 809 506</p>
     <p>Email : dorcasmakalamba028@gmail.com</p>
@@ -123,9 +129,34 @@
       <textarea name="Message" placeholder="Votre message" required></textarea><br>
       <button type="submit">Envoyer</button>
     </form>
-  </section>  <footer>
+  </section>
+
+  <footer>
     <p>© 2025 Do' Mak's Moda — Tous droits réservés.</p>
-  </footer>  <script>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+
+    function showSection(id) {
+      sections.forEach(section => section.classList.remove('active'));
+      const target = document.querySelector(id);
+      if (target) target.classList.add('active');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      showSection('#accueil');
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = link.getAttribute('href');
+        showSection(id);
+      });
+    });
+
     const panier = [];
     function ajouterAuPanier(article, prix) {
       panier.push({ article, prix });
@@ -148,5 +179,6 @@
       message += `%0ATotal: ${total}$`;
       whatsappLink.href = "https://wa.me/243816809506?text=" + message;
     }
-  </script></body>
+  </script>
+</body>
 </html>
