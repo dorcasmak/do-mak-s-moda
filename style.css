@@ -200,3 +200,11 @@ ul#liste-panier {
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
+#accueil {
+  background: url('accueil-bg.jpg') center/cover no-repeat;
+  color: white;
+  padding: 100px 15px;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  border-radius: 8px;
+}
