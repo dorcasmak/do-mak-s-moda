@@ -1,28 +1,28 @@
-/* Reset de base */
+/* RESET */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  color: #333;
   background-color: #ffffff;
+  color: #333;
+  line-height: 1.6;
 }
 
-/* Header */
+/* HEADER */
 header {
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
   text-align: center;
   padding: 2rem 1rem;
-  position: relative;
-  z-index: 2;
 }
 
 header h1 {
   font-size: 2.5em;
+  margin-bottom: 0.5rem;
 }
 
 nav {
@@ -34,17 +34,22 @@ nav a {
   text-decoration: none;
   margin: 0 12px;
   font-weight: bold;
+  transition: color 0.3s ease;
 }
 
-/* Section générale */
+nav a:hover {
+  color: #ffd700;
+}
+
+/* SECTION GÉNÉRALE */
 section {
   padding: 3rem 1rem;
   max-width: 1000px;
   margin: auto;
 }
 
-/* Accueil avec image de fond */
-.accueil {
+/* ACCUEIL AVEC IMAGE DE FOND */
+#accueil {
   background: url('acceuil-bg.jpg') no-repeat center center/cover;
   height: 100vh;
   position: relative;
@@ -55,57 +60,51 @@ section {
   text-align: center;
 }
 
-/* Overlay sombre */
-.accueil::before {
-  content: '';
+#accueil::before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Texte accueil */
-.accueil .overlay {
+#accueil .overlay {
   position: relative;
-  z-index: 2;
-  padding: 20px;
+  z-index: 1;
+  padding: 2rem;
 }
 
-.accueil h2 {
-  font-size: 2.5em;
-  margin-bottom: 10px;
-  font-weight: bold;
-  letter-spacing: 1px;
+#accueil h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
 }
 
-.accueil p {
-  font-size: 1.3em;
+#accueil p {
+  font-size: 1.2rem;
   max-width: 600px;
   margin: 0 auto;
 }
 
-/* Titres */
+/* TITRES */
 h2 {
   color: #5e4b8b;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   text-align: center;
 }
 
-/* Galerie */
+/* GALERIE */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
-  padding: 1rem;
 }
 
 .item {
-  background: white;
+  background: #fff;
   padding: 10px;
-  border-radius: 12px;
+  border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
@@ -115,17 +114,12 @@ h2 {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
-.item h3 {
-  margin-top: 0.5rem;
-}
-
-/* Formulaires */
+/* FORMULAIRE */
 form input,
-form textarea,
-form select {
+form textarea {
   width: 100%;
   padding: 10px;
   margin: 0.5rem 0;
@@ -140,21 +134,14 @@ form button {
   padding: 10px 14px;
   border-radius: 6px;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 form button:hover {
   background-color: #4b3a6f;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  background-color: #5e4b8b;
-  color: white;
-  padding: 20px 0;
-}
-
-/* Panier */
+/* PANIER */
 ul#liste-panier {
   list-style: none;
   padding-left: 0;
@@ -170,32 +157,49 @@ ul#liste-panier {
   text-decoration: none;
 }
 
+/* FOOTER */
+footer {
+  text-align: center;
+  background-color: #5e4b8b;
+  color: white;
+  padding: 20px 0;
+  margin-top: 2rem;
+}
+
 /* FAQ */
-.faq {
-  margin-bottom: 2rem;
-}
-
-.faq h3 {
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
-}
-
-/* Tarifs */
-.tarif {
-  border: 1px solid #ccc;
+details {
+  margin-bottom: 1rem;
+  background: #f9f9f9;
   padding: 1rem;
   border-radius: 8px;
-  margin-bottom: 1rem;
-  background: #fff;
 }
 
-/* Calendrier */
-.calendrier {
-  margin: 2rem 0;
-}
-
+/* CALENDRIER */
 iframe {
-  border: none;
   width: 100%;
   height: 500px;
+  border: none;
+}
+
+/* WHATSAPP FLOTTANT */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  text-decoration: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+.floating-whatsapp:hover {
+  background: #1ebe5d;
 }
