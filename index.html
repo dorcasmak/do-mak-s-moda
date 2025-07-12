@@ -4,18 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Do' Mak's Moda | Couture, Formation et Mode à Lubumbashi</title>
-<meta name="description" content="Do' Mak's Moda - Maison de couture à Lubumbashi. Formations professionnelles, créations sur mesure, stages en haute couture. Élégance, foi et excellence.">
-<meta name="keywords" content="couture Lubumbashi, mode RDC, formation couture, Dorcas Makalamba, vêtements sur mesure, haute couture, stage couture, robe cérémonie">
-<meta name="author" content="Do' Mak's Moda">
-<meta name="robots" content="index, follow">
+  <meta name="description" content="Do' Mak's Moda - Maison de couture à Lubumbashi. Formations professionnelles, créations sur mesure, stages en haute couture. Élégance, foi et excellence.">
+  <meta name="keywords" content="couture Lubumbashi, mode RDC, formation couture, Dorcas Makalamba, vêtements sur mesure, haute couture, stage couture, robe cérémonie">
+  <meta name="author" content="Do' Mak's Moda">
+  <meta name="robots" content="index, follow">
 
-<!-- Open Graph pour Facebook, WhatsApp, etc. -->
-<meta property="og:title" content="Do' Mak's Moda | coupe et Couture et Formation à Kinshasa">
-<meta property="og:description" content="Formations couture, vêtements sur mesure, stages et créations uniques. Maison fondée par Dorcas Makalamba.">
-<meta property="og:image" content="https://dorcasmak.github.io/do-maks-moda/cover.jpg"> <!-- remplace par ton image -->
-<meta property="og:url" content="https://dorcasmak.github.io/do-mak-s-moda">
-<meta property="og:type" content="website"></title>
+  <!-- Open Graph pour les réseaux sociaux -->
+  <meta property="og:title" content="Do' Mak's Moda | Coupe, Couture et Formation à Kinshasa">
+  <meta property="og:description" content="Formations couture, vêtements sur mesure, stages et créations uniques. Maison fondée par Dorcas Makalamba.">
+  <meta property="og:image" content="https://dorcasmak.github.io/do-maks-moda/cover.jpg">
+  <meta property="og:url" content="https://dorcasmak.github.io/do-mak-s-moda">
+  <meta property="og:type" content="website">
+
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.png" type="image/png" />
   <style>
     /* Colle ici tout le CSS qu'on te donne ci-dessous si tu es sur CodePen */
   </style>
@@ -48,7 +50,7 @@
 
   <section id="apropos">
     <h2>À propos</h2>
-    <p>Fondée par Dorcas Makalamba, Do' Mak's Moda vous propose des vêtements sur mesure, alliant art, foi et élégance.Nous vous assurons une formation professionnelle en coupe et couture. Do' Mak's Moda : La touche professionnelle sur vos vêtements</p>
+    <p>Fondée par Dorcas Makalamba, Do' Mak's Moda vous propose des vêtements sur mesure, alliant art, foi et élégance. Nous vous assurons une formation professionnelle en coupe et couture. Do' Mak's Moda : La touche professionnelle sur vos vêtements.</p>
   </section>
 
   <section id="services">
@@ -160,21 +162,23 @@
      class="whatsapp-float" target="_blank" aria-label="WhatsApp">
     <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
   </a>
-<script>
-  const images = [
-    "accueil-bg.jpg",
-    "accueil1.jpg",
-    "accueil2.jpg",
-    "accueil3.png"
-  ]; // remplace par tes vraies images
 
-  let index = 0;
-  const accueil = document.querySelector('.accueil');
+  <script>
+    const images = [
+      "accueil-bg.jpg",
+      "accueil1.jpg",
+      "accueil2.jpg",
+      "accueil3.png"
+    ]; // Remplace par tes vraies images
 
-  setInterval(() => {
-    accueil.style.background = `url('${images[index]}') center center / cover no-repeat`;
-    index = (index + 1) % images.length;
-  }, 4000); // toutes les 6 secondes
-</script>
+    let index = 0;
+    const accueil = document.querySelector('.accueil');
+
+    setInterval(() => {
+      accueil.style.background = `url('${images[index]}') center center / cover no-repeat`;
+      index = (index + 1) % images.length;
+    }, 4000); // Change toutes les 4 secondes
+  </script>
+
 </body>
 </html>
