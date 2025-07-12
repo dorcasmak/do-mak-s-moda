@@ -149,6 +149,21 @@
      class="whatsapp-float" target="_blank" aria-label="WhatsApp">
     <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
   </a>
+<script>
+  const images = [
+    "accueil-bg.png",
+    "acceuil1.jpg",
+    "acceuil2.jpg",
+    "acceuil3.jpg"
+  ]; // remplace par tes vraies images
 
+  let index = 0;
+  const accueil = document.querySelector('.accueil');
+
+  setInterval(() => {
+    accueil.style.background = `url('${images[index]}') center center / cover no-repeat`;
+    index = (index + 1) % images.length;
+  }, 6000); // toutes les 6 secondes
+</script>
 </body>
 </html>
