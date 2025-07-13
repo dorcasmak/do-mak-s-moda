@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html><html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -7,196 +6,158 @@
   <meta name="description" content="Do' Mak's Moda - Maison de couture à Kinshasa. Formations professionnelles, créations sur mesure, stages en haute couture. Élégance, foi et excellence.">
   <meta name="keywords" content="couture Kinshasa, mode RDC, formation couture, Dorcas Makalamba, vêtements sur mesure, haute couture, stage couture, robe cérémonie">
   <meta name="author" content="Do' Mak's Moda">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Do' Mak's Moda | Coupe, Couture et Formation à Kinshasa">
+  <meta name="robots" content="index, follow">  <!-- Open Graph pour les réseaux sociaux -->  <meta property="og:title" content="Do' Mak's Moda | Coupe, Couture et Formation à Kinshasa">
   <meta property="og:description" content="Formations couture, vêtements sur mesure, stages et créations uniques. Maison fondée par Dorcas Makalamba.">
   <meta property="og:image" content="https://dorcasmak.github.io/do-maks-moda/accueil1.jpg">
   <meta property="og:url" content="https://dorcasmak.github.io/do-mak-s-moda">
-  <meta property="og:type" content="website">
-  <link rel="stylesheet" href="style.css" />
+  <meta property="og:type" content="website">  <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.png" type="image/png" />
   <style>
-    * {
-      box-sizing: border-box;
-    }
     body {
       margin: 0;
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
     }
-    .gallery-horizontal {
-      display: flex;
-      overflow-x: auto;
-      flex-direction: row-reverse;
-      gap: 10px;
-      scroll-snap-type: x mandatory;
-      padding: 10px;
-    }
-    .gallery-horizontal::-webkit-scrollbar {
-      display: none;
-    }
-    .gallery-horizontal .item {
-      scroll-snap-align: center;
-      min-width: 300px;
-      max-width: 90%;
-      flex-shrink: 0;
-      background: #f9f9f9;
-      padding: 10px;
-      border-radius: 10px;
+    header, nav, footer {
       text-align: center;
+      background: #111;
+      color: white;
+      padding: 1em;
     }
-    .gallery-horizontal img, .gallery-horizontal video {
-      width: 100%;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-    .btn-retour {
-      margin-top: 10px;
-      display: inline-block;
-      padding: 8px 16px;
-      background-color: #222;
-      color: #fff;
-      border-radius: 6px;
+    nav a {
+      color: white;
+      margin: 0 10px;
       text-decoration: none;
     }
-    @media (hover: none) {
-      html, body {
-        touch-action: pan-x pan-y;
-      }
+    section {
+      padding: 2em;
+    }
+    .gallery {
+      display: flex;
+      flex-direction: row-reverse;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 1em;
+    }
+    .gallery::-webkit-scrollbar {
+      display: none;
+    }
+    .item {
+      scroll-snap-align: start;
+      flex: 0 0 auto;
+      width: 200px;
+      max-height: 200px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      background: #f9f9f9;
+      padding: 10px;
+      text-align: center;
+    }
+    .item img, .item video {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .retour-accueil {
+      margin-top: 1em;
+      display: inline-block;
+      background: #111;
+      color: white;
+      padding: 0.5em 1em;
+      border-radius: 5px;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-
-<header>
-  <h1>Do' Mak's Moda</h1>
-  <nav>
-    <a href="#accueil">Accueil</a>
-    <a href="#apropos">À propos</a>
-    <a href="#services">Services</a>
-    <a href="#realisations">Réalisations</a>
-    <a href="#temoignages">Témoignages</a>
-    <a href="#boutique">Boutique</a>
-    <a href="#formation">Formation</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
-    <a href="#panier">Panier 🛒</a>
-  </nav>
-</header>
-
-<section id="accueil" class="accueil">
-  <div class="overlay">
+  <header>
+    <h1>Do' Mak's Moda</h1>
+    <nav>
+      <a href="#accueil">Accueil</a>
+      <a href="#apropos">À propos</a>
+      <a href="#services">Services</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#temoignages">Témoignages</a>
+      <a href="#boutique">Boutique</a>
+      <a href="#formation">Formation</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>  <section id="accueil">
     <h2>Bienvenue chez Do' Mak's Moda</h2>
     <p>Votre maison de couture élégante et inspirante</p>
     <p>Merci de nous avoir choisi, vous êtes au bon endroit, vous ne serez pas déçu !</p>
-  </div>
-</section>
-
-<section id="realisations">
-  <h2>Quelques Réalisations</h2>
-  <div class="gallery-horizontal">
-    <div class="item"><img src="photo.jpg" alt=""><p>Robe cérémonie perlée</p></div>
-    <div class="item"><video controls src="video22.mp4"></video><p>La joie d'une apprenante</p></div>
-    <div class="item"><img src="real3.jpg" alt=""><p>Défilé novembre</p></div>
-  </div>
-  <a href="#accueil" class="btn-retour">Retour à l'accueil</a>
-</section>
-
-<section id="temoignages">
-  <h2>Quelques Témoignages</h2>
-  <div class="gallery-horizontal">
-    <div class="item"><blockquote>"J'ai été transformée par leurs formations et créations !" — Cliente satisfaite</blockquote></div>
-    <div class="item"><blockquote>"Professionnalisme et élégance réunis."</blockquote></div>
-    <div class="item"><blockquote>"Christelle Enama, cliente satisfaite."</blockquote></div>
-  </div>
-  <a href="#accueil" class="btn-retour">Retour à l'accueil</a>
-</section>
-
-<section id="boutique">
-  <h2>Visitez notre Boutique</h2>
-  <div class="gallery-horizontal">
-    <div class="item">
-      <img src="soir1.png" alt="Robe de soirée">
-      <h3>Robe soirée</h3>
-      <p>45$</p>
-      <button onclick="ajouterAuPanier('Robe de soirée', 45)">Ajouter au panier</button>
+  </section>  <section id="realisations">
+    <h2>Quelques Réalisations</h2>
+    <div class="gallery">
+      <div class="item"><img src="photo.jpg" alt="Réalisation 1" /><p>Robe cérémonie perlée</p></div>
+      <div class="item"><video controls><source src="video22.mp4" type="video/mp4"></video><p>La joie d'une apprenante</p></div>
+      <div class="item"><img src="photo1.jpg" alt="Réalisation 2" /><p>Défense Novembre 2024</p></div>
     </div>
-  </div>
-  <a href="#accueil" class="btn-retour">Retour à l'accueil</a>
-</section>
-
-<section id="formation">
-  <h2>Formation</h2>
-  <p>Choisissez votre parcours : normale (6 mois) ou accélérée (2 mois)</p>
-  <iframe src="https://calendar.google.com/calendar/embed?src=fr.drc%23holiday%40group.v.calendar.google.com&ctz=Africa%2FLubumbashi" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
-  <a href="#accueil" class="btn-retour">Retour à l'accueil</a>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>📞 +243 816 809 506</p>
-  <p>📧 dorcasmakalamba028@gmail.com</p>
-  <form>
-    <input type="text" placeholder="Nom" required />
-    <input type="email" placeholder="Email" required />
-    <textarea placeholder="Message" required></textarea>
-    <button type="submit">Envoyer</button>
-  </form>
-</section>
-
-<section id="panier">
-  <h2>Mon Panier</h2>
-  <ul id="liste-panier"></ul>
-  <p><strong>Total :</strong> <span id="total">0</span>$</p>
-  <a id="whatsapp-link" href="#" target="_blank">Commander via WhatsApp</a>
-</section>
-
-<footer>
-  <p>© 2025 Do' Mak's Moda — Tous droits réservés.</p>
-</footer>
-
-<script>
-  const panier = [];
-  function ajouterAuPanier(article, prix) {
-    panier.push({ article, prix });
-    afficherPanier();
-  }
-
-  function afficherPanier() {
-    const liste = document.getElementById("liste-panier");
-    const totalEl = document.getElementById("total");
-    const whatsappLink = document.getElementById("whatsapp-link");
-    liste.innerHTML = "";
-    let total = 0;
-    let message = "Bonjour, je souhaite commander :%0A";
-    panier.forEach(item => {
-      total += item.prix;
-      liste.innerHTML += `<li>${item.article} - ${item.prix}$</li>`;
-      message += `- ${item.article} (${item.prix}$)%0A`;
-    });
-    totalEl.textContent = total;
-    message += `%0ATotal: ${total}$`;
-    whatsappLink.href = "https://wa.me/243816809506?text=" + message;
-  }
-</script>
-
-<a href="https://wa.me/243816809506?text=Bonjour%20Do%20Mak's%20Moda" 
-   class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
-</a>
-
-<script>
-  const images = [
-    "accueil-bg.jpg",
-    "accueil1.jpg",
-    "accueil2.jpg"
-  ];
-  let index = 0;
-  const accueil = document.querySelector('.accueil');
-  setInterval(() => {
-    accueil.style.background = `url('${images[index]}') center center / cover no-repeat`;
-    index = (index + 1) % images.length;
-  }, 4000);
-</script>
-
+    <a class="retour-accueil" href="#accueil">Retour à l'accueil</a>
+  </section>  <section id="temoignages">
+    <h2>Quelques Témoignages</h2>
+    <div class="gallery">
+      <div class="item"><p>"Professionnalisme et élégance réunis."</p></div>
+      <div class="item"><p>"Je leur en suis très reconnaissante."</p></div>
+    </div>
+    <a class="retour-accueil" href="#accueil">Retour à l'accueil</a>
+  </section>  <section id="boutique">
+    <h2>Notre Boutique</h2>
+    <div class="gallery">
+      <div class="item">
+        <img src="soir1.png" alt="Robe de soirée">
+        <h3>Robe soirée</h3>
+        <p>45$</p>
+        <button onclick="ajouterAuPanier('Robe de soirée', 45)">Ajouter au panier</button>
+      </div>
+    </div>
+    <a class="retour-accueil" href="#accueil">Retour à l'accueil</a>
+  </section>  <section id="formation">
+    <h2>Formation</h2>
+    <p>Choisissez votre parcours : normale (6 mois) ou accélérée (2 mois)</p>
+    <iframe src="https://calendar.google.com/calendar/embed?src=fr.drc%23holiday%40group.v.calendar.google.com&ctz=Africa%2FLubumbashi" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+    <a class="retour-accueil" href="#accueil">Retour à l'accueil</a>
+  </section>  <section id="faq">
+    <h2>Foire aux Questions</h2>
+    <details><summary>Quels sont les prérequis ?</summary><p>Aucun. La motivation suffit !</p></details>
+    <details><summary>Comment commander ?</summary><p>Via le panier ou WhatsApp.</p></details>
+    <a class="retour-accueil" href="#accueil">Retour à l'accueil</a>
+  </section>  <section id="contact">
+    <h2>Contact</h2>
+    <p>📞 +243 816 809 506</p>
+    <p>📧 dorcasmakalamba028@gmail.com</p>
+    <form>
+      <input type="text" placeholder="Nom" required />
+      <input type="email" placeholder="Email" required />
+      <textarea placeholder="Message" required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+    <a class="retour-accueil" href="#accueil">Retour à l'accueil</a>
+  </section>  <footer>
+    <p>© 2025 Do' Mak's Moda — Tous droits réservés.</p>
+  </footer>  <script>
+    const panier = [];
+    function ajouterAuPanier(article, prix) {
+      panier.push({ article, prix });
+      afficherPanier();
+    }
+    function afficherPanier() {
+      const whatsappLink = document.getElementById("whatsapp-link");
+      let message = "Bonjour, je souhaite commander :%0A";
+      let total = 0;
+      panier.forEach(item => {
+        total += item.prix;
+        message += `- ${item.article} (${item.prix}$)%0A`;
+      });
+      message += `%0ATotal: ${total}$`;
+      whatsappLink.href = "https://wa.me/243816809506?text=" + message;
+    }
+  </script>  <a href="https://wa.me/243816809506?text=Bonjour%20Do%20Mak's%20Moda" class="whatsapp-float" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="width:60px; position:fixed; bottom:20px; right:20px; z-index:1000;" />
+  </a>
 </body>
 </html>
