@@ -1,14 +1,11 @@
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Do' Mak's Moda | Couture, Formation et Mode à Kinshasa</title>
   <meta name="description" content="Do' Mak's Moda - Maison de couture à Kinshasa. Formations professionnelles, créations sur mesure, stages en haute couture. Élégance, foi et excellence.">
   <meta name="keywords" content="couture Kinshasa, mode RDC, formation couture, Dorcas Makalamba, vêtements sur mesure, haute couture, stage couture, robe cérémonie">
-  <meta name="author" content="Do' Mak's Moda">
-  <meta name="robots" content="index, follow">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.png" type="image/png">
   <style>
     body {
       margin: 0;
@@ -20,6 +17,11 @@
       color: white;
       text-align: center;
       padding: 1em;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
     }
     nav a {
       margin: 0 10px;
@@ -79,6 +81,7 @@
       top: 10px;
       right: 15px;
       cursor: pointer;
+      z-index: 1000;
     }
     .message-ajout {
       position: fixed;
@@ -92,13 +95,60 @@
       display: none;
       z-index: 1000;
     }
+    #liste-panier li {
+      margin: 5px 0;
+    }
+    #liste-panier button {
+      margin-left: 10px;
+      background: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #333;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+      }
+      nav a {
+        padding: 10px;
+        border-top: 1px solid #555;
+      }
+      nav.active {
+        display: flex;
+      }
+      .menu-icon {
+        font-size: 30px;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        cursor: pointer;
+        z-index: 1001;
+        color: white;
+      }
+      .gallery-scroll .item {
+        width: 90%;
+      }
+    }
   </style>
 </head>
-<body><div class="message-ajout" id="msg-ajout">Article ajouté au panier !</div>
-<a href="#accueil" class="back-to-top" title="Retour en haut">⬆️</a>
-<div id="panier-icon">🛒</div><header>
+<body>
+
+<div class="message-ajout" id="msg-ajout">Article ajouté au panier !</div>
+<a href="#accueil" class="back-to-top">⬆️</a>
+<div id="panier-icon">🛒(0)</div>
+<div class="menu-icon" id="menu-icon">☰</div>
+
+<header>
   <h1>Do' Mak's Moda</h1>
-  <nav>
+  <nav id="nav">
     <a href="#accueil">Accueil</a>
     <a href="#apropos">À propos</a>
     <a href="#services">Services</a>
@@ -110,13 +160,19 @@
     <a href="#contact">Contact</a>
     <a href="#panier">Panier</a>
   </nav>
-</header><section id="accueil" class="accueil">
+</header>
+
+<section id="accueil" class="accueil">
   <h2>Bienvenue chez Do' Mak's Moda</h2>
   <p>Votre maison de couture élégante et inspirante</p>
-</section><section id="apropos">
+</section>
+
+<section id="apropos">
   <h2>À propos</h2>
-  <p>Fondée par Dorcas Makalamba, Do' Mak's Moda propose des créations sur mesure, formations, stages, et excellence vestimentaire à Kinshasa.</p>
-</section><section id="services">
+  <p>Fondée par Dorcas Makalamba, Do' Mak's Moda propose des créations sur mesure, formations et excellence vestimentaire à Kinshasa.</p>
+</section>
+
+<section id="services">
   <h2>Services</h2>
   <ul>
     <li>Formation professionnelle en haute couture</li>
@@ -124,19 +180,25 @@
     <li>Stages spécialisés</li>
     <li>Défilés & coaching en mode</li>
   </ul>
-</section><section id="realisations">
+</section>
+
+<section id="realisations">
   <h2>Réalisations</h2>
   <div class="gallery-scroll">
     <div class="item"><img src="photo1.jpg" alt="Réalisation"></div>
     <div class="item"><video controls src="video22.mp4"></video></div>
-    <div class="item"><img src="real2.jpg"></div>
+    <div class="item"><img src="real2.jpg" alt="Réalisation 2"></div>
     <div class="item"><video controls src="video24.mp4"></video></div>
   </div>
-</section><section id="temoignages">
+</section>
+
+<section id="temoignages">
   <h2>Témoignages</h2>
   <blockquote>"J'ai été transformée par leurs formations et créations !"</blockquote>
   <blockquote>"Professionnalisme et élégance réunis."</blockquote>
-</section><section id="boutique">
+</section>
+
+<section id="boutique">
   <h2>Boutique</h2>
   <div class="gallery-scroll">
     <div class="item">
@@ -145,57 +207,67 @@
       <button onclick="ajouterAuPanier('Robe soirée', 90)">Ajouter au panier</button>
     </div>
     <div class="item">
-      <img src="Robe de fête 2.png" alt="Robe fête">
-      <p>Robe de fête 2 - 75$</p>
-      <button onclick="ajouterAuPanier('Robe fête 2', 75)">Ajouter au panier</button>
+      <img src="Robe2.png" alt="Robe fête">
+      <p>Robe de fête - 75$</p>
+      <button onclick="ajouterAuPanier('Robe de fête', 75)">Ajouter au panier</button>
     </div>
   </div>
-</section><section id="formation">
+</section>
+
+<section id="formation">
   <h2>Formation</h2>
   <p>Normale (6 mois) ou Accélérée (2 mois)</p>
   <iframe src="https://calendar.google.com/calendar/embed?src=fr.drc%23holiday%40group.v.calendar.google.com&ctz=Africa%2FLubumbashi" width="100%" height="400"></iframe>
-</section><section id="faq">
+</section>
+
+<section id="faq">
   <h2>FAQ</h2>
-  <details>
-    <summary>Quels sont les prérequis ?</summary>
-    <p>Aucun. La motivation suffit !</p>
-  </details>
-  <details>
-    <summary>Comment commander ?</summary>
-    <p>Via panier ou WhatsApp</p>
-  </details>
-</section><section id="contact">
+  <details><summary>Quels sont les prérequis ?</summary><p>Aucun. La motivation suffit !</p></details>
+  <details><summary>Comment commander ?</summary><p>Via le panier ou WhatsApp</p></details>
+</section>
+
+<section id="contact">
   <h2>Contact</h2>
   <p>📞 +243 816 809 506</p>
   <p>📧 dorcasmakalamba028@gmail.com</p>
-  <form>
-    <input type="text" placeholder="Nom" required />
-    <input type="email" placeholder="Email" required />
-    <textarea placeholder="Message" required></textarea>
+  <form onsubmit="alert('Message envoyé !'); return false;">
+    <input type="text" placeholder="Nom" required><br>
+    <input type="email" placeholder="Email" required><br>
+    <textarea placeholder="Message" required></textarea><br>
     <button type="submit">Envoyer</button>
   </form>
-</section><section id="panier">
+</section>
+
+<section id="panier">
   <h2>Mon Panier</h2>
   <ul id="liste-panier"></ul>
   <p><strong>Total :</strong> <span id="total">0</span>$</p>
   <a id="whatsapp-link" href="#" target="_blank">Commander via WhatsApp</a>
-</section><footer>
+</section>
+
+<footer>
   <p>© 2025 Do' Mak's Moda — Tous droits réservés.</p>
-</footer><a href="https://wa.me/243816809506?text=Bonjour%20Do%20Mak's%20Moda" class="fixed-button" target="_blank">💬</a>
+</footer>
+
+<a href="https://wa.me/243816809506?text=Bonjour%20Do%20Mak's%20Moda" class="fixed-button" target="_blank">💬</a>
 
 <script>
-const panier = [];
+const panier = JSON.parse(localStorage.getItem("panier")) || [];
+
 function ajouterAuPanier(article, prix) {
   panier.push({ article, prix });
+  localStorage.setItem("panier", JSON.stringify(panier));
   afficherPanier();
-  const msg = document.getElementById("msg-ajout");
-  msg.style.display = "block";
-  setTimeout(() => { msg.style.display = "none"; }, 2000);
+  document.getElementById("msg-ajout").style.display = "block";
+  setTimeout(() => document.getElementById("msg-ajout").style.display = "none", 2000);
 }
+
 function supprimerDuPanier(index) {
   panier.splice(index, 1);
+  localStorage.setItem("panier", JSON.stringify(panier));
   afficherPanier();
 }
+
 function afficherPanier() {
   const liste = document.getElementById("liste-panier");
   const totalEl = document.getElementById("total");
@@ -209,22 +281,20 @@ function afficherPanier() {
     message += `- ${item.article} (${item.prix}$)%0A`;
   });
   totalEl.textContent = total;
-  if (panier.length === 0) {
-    whatsappLink.href = "#";
-    whatsappLink.onclick = () => alert("Veuillez d’abord ajouter un article");
-  } else {
-    message += `%0ATotal: ${total}$`;
-    whatsappLink.href = "https://wa.me/243816809506?text=" + message;
-    whatsappLink.onclick = null;
-  }
+  document.getElementById("panier-icon").textContent = `🛒(${panier.length})`;
+  whatsappLink.href = panier.length ? "https://wa.me/243816809506?text=" + message + `%0ATotal: ${total}$` : "#";
 }
-</script><script>
+
+document.getElementById("menu-icon").onclick = () => document.getElementById("nav").classList.toggle("active");
+
 const bgImages = ["accueil1.jpg", "accueil2.jpg", "accueil3.png"];
 let bgIndex = 0;
 setInterval(() => {
-  const section = document.getElementById("accueil");
-  section.style.backgroundImage = `url('${bgImages[bgIndex]}')`;
+  document.getElementById("accueil").style.backgroundImage = `url('${bgImages[bgIndex]}')`;
   bgIndex = (bgIndex + 1) % bgImages.length;
 }, 5000);
-</script></body>
+
+afficherPanier();
+</script>
+</body>
 </html>
