@@ -133,6 +133,13 @@
         z-index: 1001;
         color: white;
       }
+      .gallery-scroll .item img, 
+      .gallery-scroll .item video {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+}
       .gallery-scroll .item {
         width: 90%;
       }
@@ -185,12 +192,26 @@
 <section id="realisations">
   <h2>Réalisations</h2>
   <div class="gallery-scroll">
-    <div class="item"><img src="photo1.jpg" alt="Réalisation"></div>
-    <div class="item"><video controls src="video22.mp4"></video></div>
-    <div class="item"><img src="real2.jpg" alt="Réalisation 2"></div>
-    <div class="item"><video controls src="video24.mp4"></video></div>
+    <div class="item">
+      <img src="photo1.jpg" alt="Réalisation 1" onclick="ouvrirMedia(this.src)">
+    </div>
+    <div class="item">
+      <video src="video22.mp4" controls muted onclick="pauseAutres(this)" style="cursor:pointer;"></video>
+    </div>
+    <div class="item">
+      <img src="real2.jpg" alt="Réalisation 2" onclick="ouvrirMedia(this.src)">
+    </div>
+    <div class="item">
+      <video src="video24.mp4" controls muted onclick="pauseAutres(this)" style="cursor:pointer;"></video>
+    </div>
   </div>
 </section>
+
+<!-- Fenêtre modale pour agrandir image ou vidéo -->
+<div id="lightbox" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000d;z-index:10000;justify-content:center;align-items:center;" onclick="fermerLightbox()">
+  <img id="lightbox-img" style="max-width:90%;max-height:90%;display:none;">
+  <video id="lightbox-video" style="max-width:90%;max-height:90%;display:none;" controls></video>
+</div>
   <section id="apprennantes">
   <h2>Nos Apprenantes</h2>
   <div class="gallery-scroll">
@@ -284,6 +305,36 @@ function supprimerDuPanier(index) {
   localStorage.setItem("panier", JSON.stringify(panier));
   afficherPanier();
 }
+function ouvrirMedia(src) {
+  const lightbox = document.getElementById("lightbox");
+  const img = document.getElementById("lightbox-img");
+  const video = document.getElementById("lightbox-video");
+
+  if (src.endsWith(".mp4")) {
+    img.style.display = "none";
+    video.style.display = "block";
+    video.src = src;
+    video.play();
+  } else {
+    video.style.display = "none";
+    img.style.display = "block";
+    img.src = src;
+  }
+  lightbox.style.display = "flex";
+}
+
+function fermerLightbox() {
+  const lightbox = document.getElementById("lightbox");
+  const video = document.getElementById("lightbox-video");
+  video.pause();
+  lightbox.style.display = "none";
+}
+
+function pauseAutres(currentVideo) {
+  document.querySelectorAll("video").forEach(video => {
+    if (video !== currentVideo) video.pause();
+  });
+      }
 
 function afficherPanier() {
   const liste = document.getElementById("liste-panier");
