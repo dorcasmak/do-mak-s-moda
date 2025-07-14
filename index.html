@@ -12,12 +12,21 @@
       font-family: Arial, sans-serif;
       overflow-x: hidden;
     }
-    header, footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 1em;
-    }
+    header {
+  background:#333;
+  color:white;
+  text-align:center;
+  padding:1em;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+}
+body {
+  margin:0;
+  padding-top:80px; /* pour ne pas que le contenu passe sous le header */
+}
     nav {
       display: flex;
       justify-content: center;
@@ -151,6 +160,9 @@
 <div class="message-ajout" id="msg-ajout">Article ajouté au panier !</div>
 <a href="#accueil" class="back-to-top">⬆️</a>
 <div id="panier-icon">🛒(0)</div>
+<div id="panier-info" style="position:fixed; top:50px; right:10px; background:#FFD700; color:#000; padding:5px 10px; border-radius:5px; font-size:13px; z-index:999; display:none;">
+  📃 <a href="#panier" style="color:#000; text-decoration:none;">Voir panier en bas</a>
+</div>
 <div class="menu-icon" id="menu-icon">☰</div>
 
 <header>
@@ -193,13 +205,13 @@
   <h2>Réalisations</h2>
   <div class="gallery-scroll">
     <div class="item">
-      <img src="photo1.jpg" alt="Réalisation 1" onclick="ouvrirMedia(this.src)">
+      <img src="photo1.jpg" alt="Réalisation 1" onclick="ouvrirMedia(this.src)" loading="lazy" >
     </div>
     <div class="item">
       <video src="video22.mp4" controls muted onclick="pauseAutres(this)" style="cursor:pointer;"></video>
     </div>
     <div class="item">
-      <img src="real2.jpg" alt="Réalisation 2" onclick="ouvrirMedia(this.src)">
+      <img src="real2.jpg" alt="Réalisation 2" onclick="ouvrirMedia(this.src)" loading="lazy">
     </div>
     <div class="item">
       <video src="video24.mp4" controls muted onclick="pauseAutres(this)" style="cursor:pointer;"></video>
@@ -216,15 +228,15 @@
   <h2>Nos Apprenantes en Action</h2>
   <div class="gallery-scroll">
     <div class="item">
-      <img src="application 1.jpg" alt="Apprenante 1">
+      <img src="application 1.jpg" alt="Apprenante 1" loading="lazy"> >
       <p>Clarisse — « J’ai appris à coudre ma première robe en moins de 2 semaines ! »</p>
     </div>
     <div class="item">
-      <img src="application 2.jpg" alt="Apprenante 2">
+      <img src="application 2.jpg" alt="Apprenante 2" loading="lazy">>
       <p>Esther — « Merci à Do' Mak's Moda pour leur patience et leur excellence. »</p>
     </div>
     <div class="item">
-      <img src="appr3.jpg" alt="Apprenante 3">
+      <img src="appr3.jpg" alt="Apprenante 3" loading="lazy"> >
       <p>Marie — « Aujourd'hui, je vis de ma passion grâce à cette formation. »</p>
     </div>
   </div>
@@ -240,14 +252,14 @@
   <h2>Boutique</h2>
   <div class="gallery-scroll">
     <div class="item">
-      <img src="soir1.png" alt="Robe soirée">
-      <p>Robe soirée - 90$</p>
-      <button onclick="ajouterAuPanier('Robe soirée', 90)">Ajouter au panier</button>
+      <img src="soir1.png" alt="Robe soirée" loading="lazy"> >
+      <p>Robe soirée - 350$</p>
+      <button onclick="ajouterAuPanier(this, 'Robe soirée', 90)">Ajouter au panier</button>
     </div>
     <div class="item">
-      <img src="Robe2.png" alt="Robe fête">
+      <img src="Robe de fete 2.png" alt="Robe fête" loading="lazy"> >
       <p>Robe de fête - 75$</p>
-      <button onclick="ajouterAuPanier('Robe de fête', 75)">Ajouter au panier</button>
+      <button onclick="ajouterAuPanier('Robe de fête 2', 75)">Ajouter au panier</button>
     </div>
   </div>
 </section>
@@ -281,10 +293,27 @@
   <ul id="liste-panier"></ul>
   <p><strong>Total :</strong> <span id="total">0</span>$</p>
   <a id="whatsapp-link" href="#" target="_blank">Commander via WhatsApp</a>
+  <section id="panier">
+  <h2>Mon Panier</h2>
+  <ul id="liste-panier"></ul>
+  <p><strong>Total :</strong> <span id="total">0</span>$</p>
+  <a id="whatsapp-link" href="#" target="_blank" class="bouton-commander" style="display:inline-block; padding:10px 20px; background:#25D366; color:#fff; border-radius:5px; text-decoration:none; margin-top:10px;">Commander via WhatsApp</a>
+  <div id="info-paiement" style="margin-top:15px; font-size:14px; color:#333; background:#f9f9f9; padding:12px; border-radius:6px; border:1px solid #ddd;">
+    <strong>Moyens de paiement acceptés :</strong> M-PESA, Orange Money, Airtel Money.<br>
+    Après votre paiement mobile, veuillez envoyer par WhatsApp une capture d’écran et le numéro de votre reçu au +243 816 809 506.<br>
+    Cela nous permettra de valider rapidement votre commande. Merci !
+  </div>
+</section>
 </section>
 
 <footer>
   <p>© 2025 Do' Mak's Moda — Tous droits réservés.</p>
+  <div style="background:#444; color:white; text-align:center; padding:10px;">
+  <p style="margin:5px 0;">Suivez-nous :</p>
+  <a href="https://wa.me/243816809506" target="_blank" style="color:#25D366; margin:0 10px; font-size:22px; text-decoration:none;">💬</a>
+  <a href="https://www.instagram.com/tonprofil" target="_blank" style="color:#E1306C; margin:0 10px; font-size:22px; text-decoration:none;">📸</a>
+  <a href="https://www.facebook.com/Dorcas Makalamba" target="_blank" style="color:#3b5998; margin:0 10px; font-size:22px; text-decoration:none;">📘</a>
+</div>
 </footer>
 
 <a href="https://wa.me/243816809506?text=Bonjour%20Do%20Mak's%20Moda" class="fixed-button" target="_blank">💬</a>
@@ -292,12 +321,16 @@
 <script>
 const panier = JSON.parse(localStorage.getItem("panier")) || [];
 
-function ajouterAuPanier(article, prix) {
+function ajouterAuPanier(btn, article, prix) {
   panier.push({ article, prix });
-  localStorage.setItem("panier", JSON.stringify(panier));
   afficherPanier();
-  document.getElementById("msg-ajout").style.display = "block";
-  setTimeout(() => document.getElementById("msg-ajout").style.display = "none", 2000);
+  const msg = document.getElementById("msg-ajout");
+  msg.style.display = "block";
+  setTimeout(() => { msg.style.display = "none"; }, 2000);
+  document.getElementById("panier-info").style.display = "block";
+
+  btn.disabled = true;
+  setTimeout(() => { btn.disabled = false; }, 1500);
 }
 
 function supprimerDuPanier(index) {
@@ -342,15 +375,40 @@ function afficherPanier() {
   const whatsappLink = document.getElementById("whatsapp-link");
   liste.innerHTML = "";
   let total = 0;
-  let message = "Bonjour, je souhaite commander :%0A";
+  let message = "Bonjour, je souhaite commander chez Do' Mak's Moda :%0A";
   panier.forEach((item, i) => {
     total += item.prix;
     liste.innerHTML += `<li>${item.article} - ${item.prix}$ <button onclick="supprimerDuPanier(${i})">Supprimer</button></li>`;
     message += `- ${item.article} (${item.prix}$)%0A`;
   });
   totalEl.textContent = total;
-  document.getElementById("panier-icon").textContent = `🛒(${panier.length})`;
-  whatsappLink.href = panier.length ? "https://wa.me/243816809506?text=" + message + `%0ATotal: ${total}$` : "#";
+
+  if (panier.length === 0) {
+    whatsappLink.href = "#";
+    whatsappLink.onclick = () => {
+      showToast("Veuillez d’abord ajouter un article");
+    };
+    document.getElementById("panier-info").style.display = "none";
+  } else {
+    message += `%0ATotal : ${total}$%0A`;
+    message += `%0AModes de paiement acceptés : M-PESA, Orange Money, Airtel Money.%0A`;
+    message += `Après paiement, envoyez par WhatsApp une capture ou numéro de reçu au +243 816 809 506.%0A`;
+    message += `Merci beaucoup ! 🙏`;
+    whatsappLink.href = "https://wa.me/243816809506?text=" + message;
+    whatsappLink.onclick = null;
+    document.getElementById("panier-info").style.display = "block";
+  }
+  // ... ton code d'affichage habituel ...
+  
+  // Met à jour le compteur visible
+  const compteur = document.getElementById("compteur");
+  if (panier.length > 0) {
+    compteur.style.display = "inline-block";
+    compteur.textContent = panier.length;
+  } else {
+    compteur.style.display = "none";
+  }
+}
 }
 
 document.getElementById("menu-icon").onclick = () => document.getElementById("nav").classList.toggle("active");
