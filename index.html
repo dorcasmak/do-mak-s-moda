@@ -11,6 +11,24 @@
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
+    @keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+.pop {
+  animation: pop 0.3s ease;
+}
+    @keyframes buttonClick {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.bounce {
+  animation: buttonClick 0.2s;
+}
     header {
       background: #333;
       color: #fff;
@@ -433,21 +451,25 @@
 
   // Panier functions
   function ajouterAuPanier(article, prix) {
-    panier.push({ article, prix });
-    afficherPanier();
-    const compteur = document.getElementById("compteur");
-    const panierInfo = document.getElementById("panier-info");
-    const msgAjout = document.getElementById("msg-ajout");
+  panier.push({ article, prix });
+  const compteur = document.getElementById("compteur");
+  const panierInfo = document.getElementById("panier-info");
+  const msgAjout = document.getElementById("msg-ajout");
 
-    compteur.style.display = "inline-block";
-    compteur.textContent = panier.length;
+  compteur.style.display = "inline-block";
+  compteur.textContent = panier.length;
 
-    msgAjout.style.display = "block";
-    setTimeout(() => {
-      msgAjout.style.display = "none";
-    }, 2000);
+  // Ajout effet d'animation compteur
+  compteur.classList.add("pop");
+  setTimeout(() => { compteur.classList.remove("pop"); }, 300);
 
-    panierInfo.style.display = "inline-block";
+  msgAjout.style.display = "block";
+  setTimeout(() => { msgAjout.style.display = "none"; }, 2000);
+
+  panierInfo.style.display = "inline-block";
+
+  // Lecture du son clic
+  document.getElementById("son-ajout").play();
   }
 
   function afficherPanier() {
@@ -480,5 +502,6 @@
     }
   }
 </script>
+  <audio id="son-ajout" src="click.mp3" preload="auto"></audio>
 </body>
 </html>
