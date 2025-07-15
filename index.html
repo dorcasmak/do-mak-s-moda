@@ -10,15 +10,38 @@
     nav { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
     nav a { color: #fff; text-decoration: none; padding: 6px 10px; background: #444; border-radius: 4px; }
 
-    .menu-toggle { display: none; position: fixed; top: 15px; left: 15px; font-size: 30px; color: white; cursor: pointer; z-index: 10000; }
-    .menu-mobile {
-      display: none; flex-direction: column;
-      position: fixed; top: 0; right: -250px;
-      width: 220px; height: 100%;
-      background: #333; color: white; padding: 20px;
-      gap: 20px; transition: right 0.3s ease; z-index: 99999;
+    .menu-toggle {
+      display: none;
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+      z-index: 10000;
     }
-    .menu-mobile a { color: white; text-decoration: none; font-size: 18px; }
+
+    .menu-mobile {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 220px;
+      height: 100%;
+      background: #333;
+      color: white;
+      padding: 20px;
+      gap: 20px;
+      transition: right 0.3s ease;
+      z-index: 99999;
+    }
+
+    .menu-mobile a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
 
     @media (max-width: 768px) {
       nav { display: none; }
@@ -26,41 +49,59 @@
     }
 
     #accueil {
-      height: 400px; display: flex;
-      align-items: center; justify-content: center;
-      color: white; flex-direction: column;
-      background-size: cover; background-position: center;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      flex-direction: column;
+      background-size: cover;
+      background-position: center;
     }
 
     section { padding: 2em; }
 
     .gallery {
-      display: flex; overflow-x: auto; gap: 10px; padding: 10px 0;
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding: 10px 0;
     }
 
     .gallery img, .gallery video {
-      width: 180px; height: 180px;
-      object-fit: cover; border-radius: 8px;
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
       cursor: pointer;
     }
 
     .lightbox {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: rgba(0,0,0,0.9);
-      display: flex; align-items: center;
-      justify-content: center; z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
       flex-direction: column;
     }
 
     .lightbox-content {
-      max-width: 90%; max-height: 90%;
+      max-width: 90%;
+      max-height: 90%;
     }
 
     .lightbox-btn {
-      color: white; font-size: 30px;
-      background: transparent; border: none;
-      position: absolute; top: 50%;
+      color: white;
+      font-size: 30px;
+      background: transparent;
+      border: none;
+      position: absolute;
+      top: 50%;
       transform: translateY(-50%);
       cursor: pointer;
       padding: 20px;
@@ -73,15 +114,15 @@
 <body>
 
 <header>
-  <div class="menu-toggle" onclick="ouvrirMenu()">☰</div>
+  <div class="menu-toggle" id="menuToggle">☰</div>
   <h1>Do' Mak's Moda</h1>
   <nav>
     <a href="#accueil">Accueil</a>
     <a href="#galerie">Galerie</a>
   </nav>
   <div class="menu-mobile" id="menuMobile">
-    <a href="#accueil" onclick="fermerMenu()">Accueil</a>
-    <a href="#galerie" onclick="fermerMenu()">Galerie</a>
+    <a href="#accueil">Accueil</a>
+    <a href="#galerie">Galerie</a>
   </div>
 </header>
 
@@ -101,17 +142,34 @@
 </section>
 
 <script>
-  // Menu mobile
-  function ouvrirMenu() { document.getElementById("menuMobile").style.right = "0"; }
-  function fermerMenu() { document.getElementById("menuMobile").style.right = "-250px"; }
-  document.addEventListener("click", e => {
-    const menu = document.getElementById("menuMobile");
-    const toggle = document.querySelector(".menu-toggle");
-    if (!menu.contains(e.target) && e.target !== toggle) fermerMenu();
+  // Menu mobile fiable
+  const menuMobile = document.getElementById("menuMobile");
+  const menuToggle = document.getElementById("menuToggle");
+
+  menuToggle.addEventListener("click", () => {
+    if (menuMobile.style.right === "0px") {
+      menuMobile.style.right = "-250px";
+    } else {
+      menuMobile.style.right = "0px";
+    }
+  });
+
+  // Fermer menu en cliquant sur un lien du menu mobile
+  document.querySelectorAll("#menuMobile a").forEach(link => {
+    link.addEventListener("click", () => {
+      menuMobile.style.right = "-250px";
+    });
+  });
+
+  // Fermer menu en cliquant ailleurs
+  window.addEventListener("click", function(e) {
+    if (!menuMobile.contains(e.target) && e.target !== menuToggle && menuMobile.style.right === "0px") {
+      menuMobile.style.right = "-250px";
+    }
   });
 
   // Slider accueil
-  const bgImages = ["accueil1.jpg","accueil2.jpg","accueil3.png"];
+  const bgImages = ["accueil1.jpg", "accueil2.jpg", "accueil3.png"];
   let bgIndex = 0;
   setInterval(() => {
     document.getElementById("accueil").style.backgroundImage = `url(${bgImages[bgIndex]})`;
