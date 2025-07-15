@@ -303,10 +303,12 @@ const panier = JSON.parse(localStorage.getItem("panier")) || [];
 
 function ajouterAuPanier(article, prix) {
   panier.push({ article, prix });
-  localStorage.setItem("panier", JSON.stringify(panier));
   afficherPanier();
-  document.getElementById("msg-ajout").style.display = "block";
-  setTimeout(() => document.getElementById("msg-ajout").style.display = "none", 2000);
+  const msg = document.getElementById("msg-ajout");
+  msg.style.display = "block";
+  setTimeout(() => { msg.style.display = "none"; }, 2000);
+  // Afficher l'info panier en haut
+  document.getElementById("panier-info").style.display = "block";
 }
 function ouvrirMedia(src) {
   const lightbox = document.getElementById("lightbox");
