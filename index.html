@@ -279,7 +279,7 @@
     </div>
   </section>
 
-  <section id="nos-apprenantes">
+  <section id="nos-apprenantes en Action">
     <h2>Nos Apprenantes</h2>
     <div class="gallery" id="galleryApprenantes">
       <img src="appr1.jpg" alt="Apprenante 1" onclick="ouvrirLightbox(4)" />
@@ -298,7 +298,7 @@
           onclick="ouvrirLightbox(6)"
         />
         <p>Robe soirée - 90$</p>
-        <button onclick="ajouterAuPanier('Robe soirée', 90)">Ajouter au panier</button>
+        <button onclick="this.classList.add('bounce'); setTimeout(()=>this.classList.remove('bounce'),200); ajouterAuPanier('Robe soirée',90)">Ajouter au panier</button>
       </div>
       <div>
         <img
@@ -308,7 +308,7 @@
           onclick="ouvrirLightbox(7)"
         />
         <p>Robe fête - 75$</p>
-        <button onclick="ajouterAuPanier('Robe fête', 75)">Ajouter au panier</button>
+        <button onclick="this.classList.add('bounce'); setTimeout(()=>this.classList.remove('bounce'),200); ajouterAuPanier('Robe soirée',90)">Ajouter au panier</button>
       </div>
     </div>
   </section>
