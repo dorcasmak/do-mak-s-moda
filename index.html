@@ -2,344 +2,161 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Do' Mak's Moda | Couture, Formation et Mode à Kinshasa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Do' Mak's Moda | Couture & Formation</title>
   <style>
-    
-    body { margin: 0; font-family: Arial, sans-serif; overflow-x: hidden; }
-    header {
-      background: #333; color: white; text-align: center; padding: 1em;
-      position: sticky; top: 0; z-index: 9999;
-    }
-    nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 10px; }
-    nav a {
-      color: white; text-decoration: none; padding: 6px 10px;
-      background: #444; border-radius: 4px;
-    }
-    section { padding: 2em; }
-    .accueil {
-      background: url('images/accueil1.jpg') center/cover no-repeat;
-      height: 400px;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-    }
-    #panier-icon {
-      position: fixed; top: 10px; right: 15px;
-      font-size: 28px; cursor: pointer; z-index: 9999;
-    }
-    #compteur {
-      position: absolute; top: -8px; right: -8px;
-      background: red; color: white; font-size: 12px;
-      padding: 2px 6px; border-radius: 50%; display: none;
-    }
-    #panier-info {
-      display: none;
-      position: fixed; top: 12px; right: 60px;
-      background: #25D366; color: white; padding: 5px 10px;
-      border-radius: 20px; font-size: 13px; z-index: 1000;
-    }
+    body { margin: 0; font-family: sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+    header { background: #333; color: #fff; padding: 1em; position: sticky; top: 0; z-index: 9999; text-align: center; }
+    nav { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+    nav a { color: #fff; text-decoration: none; padding: 6px 10px; background: #444; border-radius: 4px; }
+
+    .menu-toggle { display: none; position: fixed; top: 15px; left: 15px; font-size: 30px; color: white; cursor: pointer; z-index: 10000; }
     .menu-mobile {
-  display: none;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  right: -260px;
-  width: 220px;
-  height: 100%;
-  background: #333;
-  color: white;
-  padding: 20px;
-  gap: 20px;
-  transition: right 0.3s ease;
-  z-index: 99999;
-}
-
-.menu-mobile a {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-}
-
-.menu-toggle {
-  display: none;
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  font-size: 30px;
-  color: white;
-  z-index: 10000;
-  cursor: pointer;
-}
-
-@media screen and (max-width: 768px) {
-  nav { display: none; }
-  .menu-toggle { display: block; }
-}
-    .message-ajout {
-      position: fixed; top: 10px; left: 50%;
-      transform: translateX(-50%);
-      background: #4CAF50; color: white; padding: 10px 20px;
-      border-radius: 5px; display: none; z-index: 9999;
+      display: none; flex-direction: column;
+      position: fixed; top: 0; right: -250px;
+      width: 220px; height: 100%;
+      background: #333; color: white; padding: 20px;
+      gap: 20px; transition: right 0.3s ease; z-index: 99999;
     }
+    .menu-mobile a { color: white; text-decoration: none; font-size: 18px; }
+
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .menu-toggle { display: block; }
+    }
+
+    #accueil {
+      height: 400px; display: flex;
+      align-items: center; justify-content: center;
+      color: white; flex-direction: column;
+      background-size: cover; background-position: center;
+    }
+
+    section { padding: 2em; }
+
+    .gallery {
+      display: flex; overflow-x: auto; gap: 10px; padding: 10px 0;
+    }
+
+    .gallery img, .gallery video {
+      width: 180px; height: 180px;
+      object-fit: cover; border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .lightbox {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: flex; align-items: center;
+      justify-content: center; z-index: 9999;
+      flex-direction: column;
+    }
+
+    .lightbox-content {
+      max-width: 90%; max-height: 90%;
+    }
+
+    .lightbox-btn {
+      color: white; font-size: 30px;
+      background: transparent; border: none;
+      position: absolute; top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      padding: 20px;
+    }
+
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
   </style>
 </head>
 <body>
 
-<!-- Panier et messages -->
-<div id="panier-icon">🛒<span id="compteur">0</span></div>
-<div id="panier-info">📦 Voir vos articles en bas</div>
-<div class="message-ajout" id="msg-ajout">Article ajouté au panier !</div>
-
-<!-- Header -->
 <header>
-<div class="menu-toggle" onclick="ouvrirMenu()">☰</div>
-
-<div class="menu-mobile" id="menuMobile">
-  <a href="#accueil" onclick="fermerMenu()">Accueil</a>
-  <a href="#apropos" onclick="fermerMenu()">À propos</a>
-  <a href="#services" onclick="fermerMenu()">Services</a>
-  <a href="#realisations" onclick="fermerMenu()">Réalisations</a>
-  <a href="#nos-apprenantes" onclick="fermerMenu()">Nos Apprenantes</a>
-  <a href="#boutique" onclick="fermerMenu()">Boutique</a>
-  <a href="#formation" onclick="fermerMenu()">Formation</a>
-  <a href="#faq" onclick="fermerMenu()">FAQ</a>
-  <a href="#contact" onclick="fermerMenu()">Contact</a>
-  <a href="#panier" onclick="fermerMenu()">Panier</a>
-</div>
+  <div class="menu-toggle" onclick="ouvrirMenu()">☰</div>
   <h1>Do' Mak's Moda</h1>
   <nav>
     <a href="#accueil">Accueil</a>
-    <a href="#apropos">À propos</a>
-    <a href="#services">Services</a>
-    <a href="#realisations">Réalisations</a>
-    <a href="#nos-apprenantes">Nos Apprenantes</a>
-    <a href="#boutique">Boutique</a>
-    <a href="#formation">Formation</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
-    <a href="#panier">Panier</a>
+    <a href="#galerie">Galerie</a>
   </nav>
+  <div class="menu-mobile" id="menuMobile">
+    <a href="#accueil" onclick="fermerMenu()">Accueil</a>
+    <a href="#galerie" onclick="fermerMenu()">Galerie</a>
+  </div>
 </header>
-<section id="accueil" class="accueil">
+
+<section id="accueil">
   <h2>Bienvenue chez Do' Mak's Moda</h2>
-  <p>Votre maison de couture élégante et inspirante</p>
-</section>
-<section id="apropos">
-  <h2>À propos</h2>
-  <p>Fondée par Dorcas Makalamba, Do' Mak's Moda propose des créations sur mesure, des formations professionnelles et des stages en haute couture à Kinshasa.</p>
+  <p>Votre maison de couture inspirante à Kinshasa</p>
 </section>
 
-<section id="services">
-  <h2>Services</h2>
-  <ul>
-    <li>Formation professionnelle en haute couture</li>
-    <li>Confection de tenues sur mesure</li>
-    <li>Stages spécialisés</li>
-    <li>Défilés et coaching en mode</li>
-  </ul>
-</section>
-
-<section id="realisations">
-  <h2>Réalisations</h2>
-  <div class="gallery-scroll">
-    <div class="item">
-      <img src="images/photo1.jpg" alt="Réalisation" onclick="ouvrirLightbox(this.src)">
-    </div>
-    <div class="item">
-      <video controls src="videos/video22.mp4" onclick="gererLectures(this)"></video>
-    </div>
-    <div class="item">
-      <img src="images/real2.jpg" alt="Réalisation 2" onclick="ouvrirLightbox(this.src)">
-    </div>
-    <div class="item">
-      <video controls src="videos/video24.mp4" onclick="gererLectures(this)"></video>
-    </div>
+<section id="galerie">
+  <h2>Galerie</h2>
+  <div class="gallery" id="gallery">
+    <img src="accueil1.jpg" alt="Image 1" onclick="ouvrirLightbox(0)">
+    <video src="video22.mp4" onclick="ouvrirLightbox(1)"></video>
+    <img src="real2.jpg" alt="Image 2" onclick="ouvrirLightbox(2)">
+    <video src="video24.mp4" onclick="ouvrirLightbox(3)"></video>
   </div>
 </section>
 
-<section id="nos-apprenantes">
-  <h2>Nos Apprenantes</h2>
-  <div class="gallery-scroll">
-    <div class="item">
-      <img src="images/appr1.jpg" alt="Apprenante 1" onclick="ouvrirLightbox(this.src)">
-    </div>
-    <div class="item">
-      <img src="images/appr2.jpg" alt="Apprenante 2" onclick="ouvrirLightbox(this.src)">
-    </div>
-  </div>
-</section>
-
-<section id="boutique">
-  <h2>Boutique</h2>
-  <div class="gallery-scroll">
-    <div class="item">
-      <img src="images/soir1.png" alt="Robe soirée" onclick="ouvrirLightbox(this.src)">
-      <p>Robe soirée - 90$</p>
-      <button onclick="ajouterAuPanier('Robe soirée', 90)">Ajouter au panier</button>
-    </div>
-    <div class="item">
-      <img src="images/fete2.png" alt="Robe fête" onclick="ouvrirLightbox(this.src)">
-      <p>Robe fête - 75$</p>
-      <button onclick="ajouterAuPanier('Robe fête', 75)">Ajouter au panier</button>
-    </div>
-  </div>
-</section>
-<section id="formation">
-  <h2>Formation</h2>
-  <p>Normale (6 mois) ou Accélérée (2 mois)</p>
-  <iframe src="https://calendar.google.com/calendar/embed?src=fr.drc%23holiday%40group.v.calendar.google.com&ctz=Africa%2FLubumbashi"
-    width="100%" height="400"></iframe>
-</section>
-
-<section id="faq">
-  <h2>FAQ</h2>
-  <details>
-    <summary>Quels sont les prérequis ?</summary>
-    <p>Aucun. La motivation suffit !</p>
-  </details>
-  <details>
-    <summary>Comment commander ?</summary>
-    <p>Via le panier en ligne ou directement via WhatsApp.</p>
-  </details>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>📞 +243 816 809 506</p>
-  <p>📧 dorcasmakalamba028@gmail.com</p>
-  <form>
-    <input type="text" placeholder="Nom" required>
-    <input type="email" placeholder="Email" required>
-    <textarea placeholder="Message" required></textarea>
-    <button type="submit">Envoyer</button>
-  </form>
-</section>
-
-<section id="panier">
-  <h2>Mon Panier</h2>
-  <ul id="liste-panier"></ul>
-  <p><strong>Total :</strong> <span id="total">0</span>$</p>
-  <a id="whatsapp-link" href="#" target="_blank">Commander via WhatsApp</a>
-</section>
-
-<footer>
-  <p>© 2025 Do' Mak's Moda — Tous droits réservés.</p>
-</footer>
-  <!-- Bouton WhatsApp flottant -->
-<a href="https://wa.me/243816809506?text=Bonjour%20Do%20Mak's%20Moda" class="fixed-button" target="_blank"
-  style="position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 10px 15px; border-radius: 50%; font-size: 20px; text-decoration: none; z-index:9999;">
-  💬
-</a>
-  <script>
-// Gestion du panier
-const panier = [];
-
-function ajouterAuPanier(article, prix) {
-  panier.push({ article, prix });
-  afficherPanier();
-  const msg = document.getElementById("msg-ajout");
-  msg.style.display = "block";
-  setTimeout(() => { msg.style.display = "none"; }, 2000);
-}
-
-function afficherPanier() {
-  const liste = document.getElementById("liste-panier");
-  const totalEl = document.getElementById("total");
-  const compteur = document.getElementById("compteur");
-  const panierInfo = document.getElementById("panier-info");
-  const whatsappLink = document.getElementById("whatsapp-link");
-
-  liste.innerHTML = "";
-  let total = 0;
-  let message = "Bonjour, je souhaite commander :%0A";
-
-  panier.forEach((item, i) => {
-    total += item.prix;
-    liste.innerHTML += `<li>${item.article} - ${item.prix}$ <button onclick="supprimerDuPanier(${i})">Supprimer</button></li>`;
-    message += `- ${item.article} (${item.prix}$)%0A`;
+<script>
+  // Menu mobile
+  function ouvrirMenu() { document.getElementById("menuMobile").style.right = "0"; }
+  function fermerMenu() { document.getElementById("menuMobile").style.right = "-250px"; }
+  document.addEventListener("click", e => {
+    const menu = document.getElementById("menuMobile");
+    const toggle = document.querySelector(".menu-toggle");
+    if (!menu.contains(e.target) && e.target !== toggle) fermerMenu();
   });
 
-  totalEl.textContent = total;
+  // Slider accueil
+  const bgImages = ["accueil1.jpg","accueil2.jpg","accueil3.png"];
+  let bgIndex = 0;
+  setInterval(() => {
+    document.getElementById("accueil").style.backgroundImage = `url(${bgImages[bgIndex]})`;
+    bgIndex = (bgIndex + 1) % bgImages.length;
+  }, 5000);
 
-  if (panier.length === 0) {
-    compteur.style.display = "none";
-    panierInfo.style.display = "none";
-    whatsappLink.href = "#";
-    whatsappLink.onclick = () => alert("Veuillez d’abord ajouter un article");
-  } else {
-    compteur.style.display = "inline-block";
-    compteur.textContent = panier.length;
-    panierInfo.style.display = "inline-block";
-    message += `%0ATotal: ${total}$`;
-    whatsappLink.href = "https://wa.me/243816809506?text=" + message;
-    whatsappLink.onclick = null;
+  // Lightbox Galerie avec navigation
+  const galleryItems = [
+    { type: 'image', src: 'accueil1.jpg' },
+    { type: 'video', src: 'video22.mp4' },
+    { type: 'image', src: 'real2.jpg' },
+    { type: 'video', src: 'video24.mp4' },
+  ];
+  let currentIndex = 0;
+
+  function ouvrirLightbox(index) {
+    currentIndex = index;
+    const item = galleryItems[currentIndex];
+    const lightbox = document.createElement("div");
+    lightbox.className = "lightbox";
+    lightbox.id = "lightbox";
+
+    let content = "";
+    if(item.type === 'image') {
+      content = `<img src="${item.src}" class="lightbox-content">`;
+    } else {
+      content = `<video src="${item.src}" controls autoplay class="lightbox-content"></video>`;
+    }
+
+    lightbox.innerHTML = `
+      <button class="lightbox-btn lightbox-prev" onclick="changerMedia(-1)">❮</button>
+      ${content}
+      <button class="lightbox-btn lightbox-next" onclick="changerMedia(1)">❯</button>
+    `;
+
+    lightbox.onclick = e => { if (e.target === lightbox) lightbox.remove(); }
+    document.body.appendChild(lightbox);
   }
-}
 
-function supprimerDuPanier(index) {
-  panier.splice(index, 1);
-  afficherPanier();
-}
-
-// Lightbox image
-function ouvrirLightbox(src) {
-  const lightbox = document.createElement("div");
-  lightbox.style.position = "fixed";
-  lightbox.style.top = "0";
-  lightbox.style.left = "0";
-  lightbox.style.width = "100%";
-  lightbox.style.height = "100%";
-  lightbox.style.background = "rgba(0,0,0,0.9)";
-  lightbox.style.display = "flex";
-  lightbox.style.alignItems = "center";
-  lightbox.style.justifyContent = "center";
-  lightbox.style.zIndex = "9999";
-  lightbox.innerHTML = `<img src="${src}" style="max-width:90%; max-height:90%;" onclick="this.parentElement.remove()">`;
-  document.body.appendChild(lightbox);
-}
-
-// Lecture vidéo unique
-function gererLectures(video) {
-  const videos = document.querySelectorAll("video");
-  videos.forEach(v => {
-    if (v !== video) v.pause();
-  });
-}
-
-// Slider accueil
-const bgImages = [
-  "images/accueil1.jpg",
-  "images/accueil2.jpg",
-  "images/accueil3.png"
-];
-let bgIndex = 0;
-setInterval(() => {
-  const section = document.getElementById("accueil");
-  section.style.backgroundImage = `url('${bgImages[bgIndex]}')`;
-  bgIndex = (bgIndex + 1) % bgImages.length;
-}, 5000);
-
-// Menu mobile déroulant animé
-function ouvrirMenu() {
-  document.getElementById("menuMobile").style.right = "0";
-}
-
-function fermerMenu() {
-  document.getElementById("menuMobile").style.right = "-260px";
-}
-
-// Fermer menu en cliquant hors menu
-window.addEventListener("click", function(event) {
-  const menu = document.getElementById("menuMobile");
-  const toggle = document.querySelector(".menu-toggle");
-  if (menu.style.right === "0px" && !menu.contains(event.target) && event.target !== toggle) {
-    fermerMenu();
+  function changerMedia(direction) {
+    currentIndex = (currentIndex + direction + galleryItems.length) % galleryItems.length;
+    document.getElementById("lightbox").remove();
+    ouvrirLightbox(currentIndex);
   }
-});
 </script>
+
 </body>
-  </html>
+</html>
