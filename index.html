@@ -359,19 +359,16 @@ function afficherPanier() {
     message += `- ${item.article} (${item.prix}$)%0A`;
   });
   totalEl.textContent = total;
-  document.getElementById("panier-icon").textContent = `🛒(${panier.length})`;
-  whatsappLink.href = panier.length ? "https://wa.me/243816809506?text=" + message + `%0ATotal: ${total}$` : "#";
+  if (panier.length === 0) {
+    whatsappLink.href = "#";
+    whatsappLink.onclick = () => alert("Veuillez d’abord ajouter un article");
+    document.getElementById("panier-info").style.display = "none"; // on cache le message
+  } else {
+    message += `%0ATotal: ${total}$`;
+    whatsappLink.href = "https://wa.me/243816809506?text=" + message;
+    whatsappLink.onclick = null;
+  }
 }
-
-document.getElementById("menu-icon").onclick = () => document.getElementById("nav").classList.toggle("active");
-
-const bgImages = ["accueil1.jpg", "accueil2.jpg", "accueil3.png"];
-let bgIndex = 0;
-setInterval(() => {
-  document.getElementById("accueil").style.backgroundImage = `url('${bgImages[bgIndex]}')`;
-  bgIndex = (bgIndex + 1) % bgImages.length;
-}, 5000);
-
 afficherPanier();
 </script>
 </body>
