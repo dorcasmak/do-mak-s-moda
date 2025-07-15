@@ -12,11 +12,28 @@
     scroll-behavior: smooth;
   }
   #paiement {
-  margin-top: 20px;
-  background: #f9f9f9;
+  background: url('billets.jpg') no-repeat center center;
+  background-size: cover;
+  color: white;
   padding: 15px;
   border-radius: 8px;
-  color: #333;
+  margin-top: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+#paiement::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 0;
+}
+
+#paiement h3, #paiement ul {
+  position: relative;
+  z-index: 1;
 }
 
 #paiement ul {
@@ -379,20 +396,26 @@
     <button type="submit">Envoyer</button>
   </form>
 </section>
-
 <section id="panier">
   <h2>Mon Panier</h2>
   <ul id="liste-panier"></ul>
   <p><strong>Total :</strong> <span id="total">0</span>$</p>
-  <a id="whatsapp-link" href="#" target="_blank">Commander via WhatsApp</a>
+
+  <!-- Bouton WhatsApp -->
+  <a id="whatsapp-link" href="#" target="_blank" style="display:inline-flex; align-items:center; gap:8px; background:#25d366; color:white; padding:10px 15px; border-radius:30px; text-decoration:none; font-weight:bold;">
+    <img src="whatsapp.svg" alt="WhatsApp" style="width:20px; height:20px;">
+    Commander via WhatsApp
+  </a>
+
+  <!-- Section paiement -->
   <div id="paiement">
-  <h3>Moyens de paiement :</h3>
-  <ul>
-    <li>📱 <strong>M-Pesa :</strong> +243 816 809 506</li>
-    <li>📞 <strong>Airtel Money :</strong> +243 890 000 000</li>
-    <li>💬 <strong>WhatsApp :</strong> passez votre commande via le bouton ci-dessus</li>
-    <li>🚚 <strong>Paiement à la livraison :</strong> disponible sur Kinshasa</li>
-  </ul>
+    <h3>Moyens de paiement :</h3>
+    <ul>
+      <li>📱 <strong>M-Pesa :</strong> +243 816 809 506</li>
+      <li>📞 <strong>Airtel Money :</strong> +243 890 000 000</li>
+      <li>💬 <strong>WhatsApp :</strong> passez votre commande via le bouton ci-dessus</li>
+      <li>🚚 <strong>Paiement à la livraison :</strong> disponible à Kinshasa</li>
+    </ul>
   </div>
 </section>
 
