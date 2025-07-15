@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Do' Mak's Moda | Couture, Formation et Mode à Kinshasa</title>
   <style>
+    
     body { margin: 0; font-family: Arial, sans-serif; overflow-x: hidden; }
     header {
       background: #333; color: white; text-align: center; padding: 1em;
@@ -41,6 +42,43 @@
       background: #25D366; color: white; padding: 5px 10px;
       border-radius: 20px; font-size: 13px; z-index: 1000;
     }
+    .menu-mobile {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 220px;
+  height: 100%;
+  background: #333;
+  color: white;
+  padding: 20px;
+  gap: 20px;
+  transition: right 0.3s ease;
+  z-index: 99999;
+}
+
+.menu-mobile a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 30px;
+  color: white;
+  z-index: 10000;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  nav { display: none; }
+  .menu-toggle { display: block; }
+}
     .message-ajout {
       position: fixed; top: 10px; left: 50%;
       transform: translateX(-50%);
@@ -58,6 +96,20 @@
 
 <!-- Header -->
 <header>
+<div class="menu-toggle" onclick="ouvrirMenu()">☰</div>
+
+<div class="menu-mobile" id="menuMobile">
+  <a href="#accueil" onclick="fermerMenu()">Accueil</a>
+  <a href="#apropos" onclick="fermerMenu()">À propos</a>
+  <a href="#services" onclick="fermerMenu()">Services</a>
+  <a href="#realisations" onclick="fermerMenu()">Réalisations</a>
+  <a href="#nos-apprenantes" onclick="fermerMenu()">Nos Apprenantes</a>
+  <a href="#boutique" onclick="fermerMenu()">Boutique</a>
+  <a href="#formation" onclick="fermerMenu()">Formation</a>
+  <a href="#faq" onclick="fermerMenu()">FAQ</a>
+  <a href="#contact" onclick="fermerMenu()">Contact</a>
+  <a href="#panier" onclick="fermerMenu()">Panier</a>
+</div>
   <h1>Do' Mak's Moda</h1>
   <nav>
     <a href="#accueil">Accueil</a>
@@ -72,8 +124,6 @@
     <a href="#panier">Panier</a>
   </nav>
 </header>
-
-<!-- Accueil -->
 <section id="accueil" class="accueil">
   <h2>Bienvenue chez Do' Mak's Moda</h2>
   <p>Votre maison de couture élégante et inspirante</p>
@@ -250,7 +300,13 @@
     lightbox.innerHTML = `<img src="${src}" style="max-width:90%; max-height:90%;" onclick="this.parentElement.remove()">`;
     document.body.appendChild(lightbox);
   }
+  function ouvrirMenu() {
+  document.getElementById("menuMobile").style.right = "0";
+}
 
+function fermerMenu() {
+  document.getElementById("menuMobile").style.right = "-260px";
+}
   // Lecture vidéo unique
   function gererLectures(video) {
     const videos = document.querySelectorAll("video");
