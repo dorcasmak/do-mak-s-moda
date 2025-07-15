@@ -1,378 +1,105 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html><html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Do' Mak's Moda | Couture, Formation et Mode à Kinshasa</title>
-  <meta name="description" content="Do' Mak's Moda - Maison de couture à Kinshasa. Formations professionnelles, créations sur mesure, stages en haute couture. Élégance, foi et excellence.">
-  <meta name="keywords" content="couture Kinshasa, mode RDC, formation couture, Dorcas Makalamba, vêtements sur mesure, haute couture, stage couture, robe cérémonie">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do' Mak's Moda | Couture & Formation Kinshasa</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      overflow-x: hidden;
-    }
-    header,footer {
-  background:#333;
-  color:white;
-  text-align:center;
-  padding:1em;
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:1000;
-}
-body {
-  margin:0;
-  padding-top:80px; /* pour ne pas que le contenu passe sous le header */
-}
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    nav a {
-      margin: 0 10px;
-      color: white;
-      text-decoration: none;
-    }
-    section {
-      padding: 2em;
-    }
-    .accueil {
-      background: url('accueil1.jpg') center center / cover no-repeat;
-      height: 400px;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-    }
-    .gallery-scroll {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 10px;
-    }
-    .item {
-      flex: 0 0 auto;
-      width: 300px;
-      scroll-snap-align: center;
-    }
-    .gallery-scroll .item img, 
-.gallery-scroll .item video {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-    .item img, .item video {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .fixed-button, .back-to-top {
-      position: fixed;
-      bottom: 20px;
-      z-index: 1000;
-      padding: 10px;
-      border-radius: 50%;
-      font-size: 20px;
-      text-decoration: none;
-    }
-    .fixed-button {
-      right: 20px;
-      background: #25D366;
-      color: white;
-    }
-    .back-to-top {
-      left: 20px;
-      background: #000;
-      color: white;
-    }
-    #panier-icon {
-      font-size: 30px;
-      position: fixed;
-      top: 10px;
-      right: 15px;
-      cursor: pointer;
-      z-index: 1000;
-    }
-    .message-ajout {
-      position: fixed;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #4CAF50;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      display: none;
-      z-index: 1000;
-    }
-    #liste-panier li {
-      margin: 5px 0;
-    }
-    #liste-panier button {
-      margin-left: 10px;
-      background: red;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 3px;
-    }
-    /* Responsive */
-    @media (max-width: 600px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        background: #333;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-      }
-      nav a {
-        padding: 10px;
-        border-top: 1px solid #555;
-      }
-      nav.active {
-        display: flex;
-      }
-      .menu-icon {
-        font-size: 30px;
-        position: fixed;
-        top: 15px;
-        left: 15px;
-        cursor: pointer;
-        z-index: 1001;
-        color: white;
-      }
-      .gallery-scroll .item {
-        width: 90%;
-      }
-    }
+    body { margin:0; font-family: Arial, sans-serif; overflow-x:hidden; }
+    header, footer { background:#333; color:white; text-align:center; padding:1em; }
+    nav { display:flex; justify-content:center; flex-wrap:wrap; }
+    nav a { color:white; margin:0 10px; text-decoration:none; }
+    section { padding:2em; }
+    .accueil { background:url('accueil1.jpg') center/cover no-repeat; height:400px; color:white; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; }
+    .gallery-scroll { display:flex; overflow-x:auto; gap:10px; }
+    .item { flex:0 0 auto; width:300px; cursor:pointer; }
+    .item img { width:100%; height:200px; object-fit:cover; border-radius:8px; }
+    .fixed-button, .back-to-top, #panier-icon {
+      position:fixed; z-index:1000; padding:10px; border-radius:50%; font-size:20px; text-decoration:none; }
+    .fixed-button { bottom:20px; right:20px; background:#25D366; color:white; }
+    .back-to-top { bottom:20px; left:20px; background:black; color:white; }
+    #panier-icon { top:10px; right:15px; cursor:pointer; font-size:26px; }
+    #lightbox { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:10000; justify-content:center; align-items:center; }
+    #lightbox img, #lightbox video { max-width:90%; max-height:90%; }
   </style>
 </head>
-<body>
+<body><a href="#accueil" class="back-to-top">⬆️</a>
 
-<div class="message-ajout" id="msg-ajout">Article ajouté au panier !</div>
-<a href="#accueil" class="back-to-top">⬆️</a>
-<div id="panier-icon">🛒(0)</div>
-  <div id="panier-info" style="position:fixed; top:50px; right:10px; background:#FFD700; color:#000; padding:5px 10px; border-radius:5px; font-size:13px; z-index:999; display:none;">
-  📃 <a href="#panier" style="color:#000; text-decoration:none;">Voir panier en bas</a>
-  </div>
-<div class="menu-icon" id="menu-icon">☰</div>
-
-<header>
+<div id="panier-icon">🛒</div><header>
   <h1>Do' Mak's Moda</h1>
-  <nav id="nav">
+  <nav>
     <a href="#accueil">Accueil</a>
     <a href="#apropos">À propos</a>
     <a href="#services">Services</a>
+    <a href="#apprennantes">Apprenantes</a>
     <a href="#realisations">Réalisations</a>
-    <a href="#temoignages">Témoignages</a>
     <a href="#boutique">Boutique</a>
-    <a href="#formation">Formation</a>
-    <a href="#faq">FAQ</a>
     <a href="#contact">Contact</a>
-    <a href="#panier">Panier</a>
   </nav>
-</header>
-
-<section id="accueil" class="accueil">
+</header><section id="accueil" class="accueil">
   <h2>Bienvenue chez Do' Mak's Moda</h2>
   <p>Votre maison de couture élégante et inspirante</p>
-</section>
-
-<section id="apropos">
+</section><section id="apropos">
   <h2>À propos</h2>
-  <p>Fondée par Dorcas Makalamba, Do' Mak's Moda propose des créations sur mesure, formations et excellence vestimentaire à Kinshasa.</p>
-</section>
-
-<section id="services">
+  <p>Fondée par Dorcas Makalamba, Do' Mak's Moda propose des créations sur mesure et des formations professionnelles en haute couture à Kinshasa.</p>
+</section><section id="services">
   <h2>Services</h2>
   <ul>
-    <li>Formation professionnelle en haute couture</li>
+    <li>Formation en haute couture</li>
     <li>Confection de tenues sur mesure</li>
     <li>Stages spécialisés</li>
-    <li>Défilés & coaching en mode</li>
   </ul>
-</section>
-
-<section id="realisations">
-  <h2>Réalisations</h2>
-  <div class="gallery-scroll">
-    <div class="item">
-  <img src="photo1.jpg" onclick="ouvrirMedia(this.src)">
-</div>
-<div class="item">
-  <img src="mini-video1.jpg" alt="Vidéo" onclick="ouvrirMedia('video1.mp4')">
-</div>
-  </div>
-</section>
-
-<!-- Fenêtre modale pour agrandir image ou vidéo -->
-<div id="lightbox" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000d;z-index:10000;justify-content:center;align-items:center;" onclick="fermerLightbox()">
-  <img id="lightbox-img" style="max-width:90%;max-height:90%;display:none;">
-  <video id="lightbox-video" style="max-width:90%;max-height:90%;display:none;" controls></video>
-</div>
-  
-<section id="apprennantes">
+</section><section id="apprennantes">
   <h2>Nos Apprenantes</h2>
   <div class="gallery-scroll">
-    <div class="item">
-      <img src="appr1.jpg" alt="Apprenante 1">
-      <p>Clarisse — « J’ai appris à coudre ma première robe en moins de 2 semaines ! »</p>
-    </div>
-    <div class="item">
-      <img src="appr2.jpg" alt="Apprenante 2">
-      <p>Esther — « Merci à Do' Mak's Moda pour leur patience et leur excellence. »</p>
-    </div>
-    <div class="item">
-      <img src="appr3.jpg" alt="Apprenante 3">
-      <p>Marie — « Aujourd'hui, je vis de ma passion grâce à cette formation. »</p>
-    </div>
+    <div class="item"><img src="appr1.jpg" alt="Apprenante 1"></div>
+    <div class="item"><img src="appr2.jpg" alt="Apprenante 2"></div>
   </div>
-</section>
-<section id="temoignages">
-  <h2>Témoignages</h2>
-  <blockquote>"J'ai été transformée par leurs formations et créations !"</blockquote>
-  <blockquote>"Professionnalisme et élégance réunis."</blockquote>
-</section>
-
-<section id="boutique">
+</section><section id="realisations">
+  <h2>Réalisations</h2>
+  <div class="gallery-scroll">
+    <div class="item"><img src="photo1.jpg" onclick="ouvrirMedia('photo1.jpg')"></div>
+    <div class="item"><img src="mini-video1.jpg" onclick="ouvrirMedia('video1.mp4')"></div>
+  </div>
+</section><section id="boutique">
   <h2>Boutique</h2>
   <div class="gallery-scroll">
-    <div class="item">
-      <img src="soir1.png" alt="Robe soirée">
-      <p>Robe soirée - 90$</p>
-      <button onclick="ajouterAuPanier('Robe soirée', 90)">Ajouter au panier</button>
-    </div>
-    <div class="item">
-      <img src="Robe2.png" alt="Robe fête">
-      <p>Robe de fête - 75$</p>
-      <button onclick="ajouterAuPanier('Robe de fête', 75)">Ajouter au panier</button>
-    </div>
+    <div class="item"><img src="robe1.jpg" onclick="ouvrirMedia('robe1.jpg')"></div>
   </div>
-</section>
-
-<section id="formation">
-  <h2>Formation</h2>
-  <p>Normale (6 mois) ou Accélérée (2 mois)</p>
-  <iframe src="https://calendar.google.com/calendar/embed?src=fr.drc%23holiday%40group.v.calendar.google.com&ctz=Africa%2FLubumbashi" width="100%" height="400"></iframe>
-</section>
-
-<section id="faq">
-  <h2>FAQ</h2>
-  <details><summary>Quels sont les prérequis ?</summary><p>Aucun. La motivation suffit !</p></details>
-  <details><summary>Comment commander ?</summary><p>Via le panier ou WhatsApp</p></details>
-</section>
-
-<section id="contact">
+</section><section id="contact">
   <h2>Contact</h2>
   <p>📞 +243 816 809 506</p>
   <p>📧 dorcasmakalamba028@gmail.com</p>
-  <form onsubmit="alert('Message envoyé !'); return false;">
-    <input type="text" placeholder="Nom" required><br>
-    <input type="email" placeholder="Email" required><br>
-    <textarea placeholder="Message" required></textarea><br>
-    <button type="submit">Envoyer</button>
-  </form>
-</section>
-
-<section id="panier">
-  <h2>Mon Panier</h2>
-  <ul id="liste-panier"></ul>
-  <p><strong>Total :</strong> <span id="total">0</span>$</p>
-  <a id="whatsapp-link" href="#" target="_blank">Commander via WhatsApp</a>
-</section>
-<div id="lightbox" onclick="fermerLightbox()" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:10000; justify-content:center; align-items:center;">
-  <img id="lightbox-img" style="max-width:90%; max-height:90%; display:none;">
-  <video id="lightbox-video" style="max-width:90%; max-height:90%; display:none;" controls></video>
-</div>
-<footer>
-  <p>© 2025 Do' Mak's Moda — Tous droits réservés.</p>
-</footer>
-
-<a href="https://wa.me/243816809506?text=Bonjour%20Do%20Mak's%20Moda" class="fixed-button" target="_blank">💬</a>
+</section><div id="lightbox" onclick="fermerLightbox()">
+  <img id="lightbox-img" style="display:none;">
+  <video id="lightbox-video" style="display:none;" controls></video>
+</div><footer><p>© 2025 Do' Mak's Moda — Tous droits réservés.</p></footer><a href="https://wa.me/243816809506" class="fixed-button" target="_blank">💬</a>
 
 <script>
-const panier = JSON.parse(localStorage.getItem("panier")) || [];
-
-function ajouterAuPanier(article, prix) {
-  panier.push({ article, prix });
-  afficherPanier();
-  const msg = document.getElementById("msg-ajout");
-  msg.style.display = "block";
-  setTimeout(() => { msg.style.display = "none"; }, 2000);
-  // Afficher l'info panier en haut
-  document.getElementById("panier-info").style.display = "block";
-}
 function ouvrirMedia(src) {
   const lightbox = document.getElementById("lightbox");
   const img = document.getElementById("lightbox-img");
   const video = document.getElementById("lightbox-video");
-
-  if (src.endsWith(".mp4")) {
-    img.style.display = "none";
-    video.style.display = "block";
-    video.src = src;
+  document.querySelectorAll("video").forEach(v=>v.pause());
+  if(src.endsWith(".mp4")){
+    img.style.display="none";
+    video.style.display="block";
+    video.src=src;
     video.play();
-  } else {
-    video.style.display = "none";
-    img.style.display = "block";
-    img.src = src;
+  }else{
+    video.pause();
+    video.style.display="none";
+    img.style.display="block";
+    img.src=src;
   }
-  lightbox.style.display = "flex";
+  lightbox.style.display="flex";
 }
-
-function fermerLightbox() {
+function fermerLightbox(){
   const lightbox = document.getElementById("lightbox");
+  document.getElementById("lightbox-img").src="";
   const video = document.getElementById("lightbox-video");
   video.pause();
-  lightbox.style.display = "none";
+  video.src="";
+  lightbox.style.display="none";
 }
-
-function pauseAutres(currentVideo) {
-  document.querySelectorAll("video").forEach(video => {
-    if (video !== currentVideo) video.pause();
-  });
-  }
-function supprimerDuPanier(index) {
-  panier.splice(index, 1);
-  localStorage.setItem("panier", JSON.stringify(panier));
-  afficherPanier();
-}
-
-function afficherPanier() {
-  const liste = document.getElementById("liste-panier");
-  const totalEl = document.getElementById("total");
-  const whatsappLink = document.getElementById("whatsapp-link");
-  liste.innerHTML = "";
-  let total = 0;
-  let message = "Bonjour, je souhaite commander :%0A";
-  panier.forEach((item, i) => {
-    total += item.prix;
-    liste.innerHTML += `<li>${item.article} - ${item.prix}$ <button onclick="supprimerDuPanier(${i})">Supprimer</button></li>`;
-    message += `- ${item.article} (${item.prix}$)%0A`;
-  });
-  totalEl.textContent = total;
-  document.getElementById("panier-icon").textContent = `🛒(${panier.length})`;
-  whatsappLink.href = panier.length ? "https://wa.me/243816809506?text=" + message + `%0ATotal: ${total}$` : "#";
-}
-
-document.getElementById("menu-icon").onclick = () => document.getElementById("nav").classList.toggle("active");
-
-const bgImages = ["accueil1.jpg", "accueil2.jpg", "accueil3.png"];
-let bgIndex = 0;
-setInterval(() => {
-  document.getElementById("accueil").style.backgroundImage = `url('${bgImages[bgIndex]}')`;
-  bgIndex = (bgIndex + 1) % bgImages.length;
-}, 5000);
-
-afficherPanier();
-</script>
-</body>
+</script></body>
 </html>
