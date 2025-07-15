@@ -52,6 +52,13 @@
       width: 300px;
       scroll-snap-align: center;
     }
+    .gallery-scroll .item img, 
+.gallery-scroll .item video {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
     .item img, .item video {
       width: 100%;
       border-radius: 8px;
@@ -186,17 +193,11 @@
   <h2>Réalisations</h2>
   <div class="gallery-scroll">
     <div class="item">
-      <img src="photo1.jpg" alt="Réalisation 1" onclick="ouvrirMedia(this.src)">
-    </div>
-    <div class="item">
-      <video src="video22.mp4" controls muted onclick="pauseAutres(this)" style="cursor:pointer;"></video>
-    </div>
-    <div class="item">
-      <img src="real2.jpg" alt="Réalisation 2" onclick="ouvrirMedia(this.src)">
-    </div>
-    <div class="item">
-      <video src="video24.mp4" controls muted onclick="pauseAutres(this)" style="cursor:pointer;"></video>
-    </div>
+  <img src="photo1.jpg" onclick="ouvrirMedia(this.src)">
+</div>
+<div class="item">
+  <img src="mini-video1.jpg" alt="Vidéo" onclick="ouvrirMedia('video1.mp4')">
+</div>
   </div>
 </section>
 
@@ -205,6 +206,7 @@
   <img id="lightbox-img" style="max-width:90%;max-height:90%;display:none;">
   <video id="lightbox-video" style="max-width:90%;max-height:90%;display:none;" controls></video>
 </div>
+  
 <section id="apprennantes">
   <h2>Nos Apprenantes</h2>
   <div class="gallery-scroll">
@@ -274,7 +276,10 @@
   <p><strong>Total :</strong> <span id="total">0</span>$</p>
   <a id="whatsapp-link" href="#" target="_blank">Commander via WhatsApp</a>
 </section>
-
+<div id="lightbox" onclick="fermerLightbox()" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:10000; justify-content:center; align-items:center;">
+  <img id="lightbox-img" style="max-width:90%; max-height:90%; display:none;">
+  <video id="lightbox-video" style="max-width:90%; max-height:90%; display:none;" controls></video>
+</div>
 <footer>
   <p>© 2025 Do' Mak's Moda — Tous droits réservés.</p>
 </footer>
