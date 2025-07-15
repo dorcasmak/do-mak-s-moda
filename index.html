@@ -551,6 +551,11 @@
     message += `%0ATotal: ${total}$`;
     whatsappLink.href = `https://wa.me/243816809506?text=${message}`;
   }
+  document.getElementById("whatsapp-link").addEventListener("click", function(e) {
+  e.preventDefault(); // éviter de suivre le lien # par défaut
+  afficherPanier(); // mettre à jour le message WhatsApp
+  window.open(this.href, "_blank"); // ouvrir le lien mis à jour dans un nouvel onglet
+});
 
   function supprimerDuPanier(index) {
     panier.splice(index, 1);
