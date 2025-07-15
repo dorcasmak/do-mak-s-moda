@@ -234,99 +234,112 @@
   style="position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 10px 15px; border-radius: 50%; font-size: 20px; text-decoration: none; z-index:9999;">
   💬
 </a>
-<script>
-  const panier = [];
+  <script>
+// Gestion du panier
+const panier = [];
 
-  function ajouterAuPanier(article, prix) {
-    panier.push({ article, prix });
-    afficherPanier();
-    const msg = document.getElementById("msg-ajout");
-    msg.style.display = "block";
-    setTimeout(() => { msg.style.display = "none"; }, 2000);
+function ajouterAuPanier(article, prix) {
+  panier.push({ article, prix });
+  afficherPanier();
+  const msg = document.getElementById("msg-ajout");
+  msg.style.display = "block";
+  setTimeout(() => { msg.style.display = "none"; }, 2000);
+}
+
+function afficherPanier() {
+  const liste = document.getElementById("liste-panier");
+  const totalEl = document.getElementById("total");
+  const compteur = document.getElementById("compteur");
+  const panierInfo = document.getElementById("panier-info");
+  const whatsappLink = document.getElementById("whatsapp-link");
+
+  liste.innerHTML = "";
+  let total = 0;
+  let message = "Bonjour, je souhaite commander :%0A";
+
+  panier.forEach((item, i) => {
+    total += item.prix;
+    liste.innerHTML += `<li>${item.article} - ${item.prix}$ <button onclick="supprimerDuPanier(${i})">Supprimer</button></li>`;
+    message += `- ${item.article} (${item.prix}$)%0A`;
+  });
+
+  totalEl.textContent = total;
+
+  if (panier.length === 0) {
+    compteur.style.display = "none";
+    panierInfo.style.display = "none";
+    whatsappLink.href = "#";
+    whatsappLink.onclick = () => alert("Veuillez d’abord ajouter un article");
+  } else {
+    compteur.style.display = "inline-block";
+    compteur.textContent = panier.length;
+    panierInfo.style.display = "inline-block";
+    message += `%0ATotal: ${total}$`;
+    whatsappLink.href = "https://wa.me/243816809506?text=" + message;
+    whatsappLink.onclick = null;
   }
+}
 
-  function afficherPanier() {
-    const liste = document.getElementById("liste-panier");
-    const totalEl = document.getElementById("total");
-    const compteur = document.getElementById("compteur");
-    const panierInfo = document.getElementById("panier-info");
-    const whatsappLink = document.getElementById("whatsapp-link");
+function supprimerDuPanier(index) {
+  panier.splice(index, 1);
+  afficherPanier();
+}
 
-    liste.innerHTML = "";
-    let total = 0;
-    let message = "Bonjour, je souhaite commander :%0A";
+// Lightbox image
+function ouvrirLightbox(src) {
+  const lightbox = document.createElement("div");
+  lightbox.style.position = "fixed";
+  lightbox.style.top = "0";
+  lightbox.style.left = "0";
+  lightbox.style.width = "100%";
+  lightbox.style.height = "100%";
+  lightbox.style.background = "rgba(0,0,0,0.9)";
+  lightbox.style.display = "flex";
+  lightbox.style.alignItems = "center";
+  lightbox.style.justifyContent = "center";
+  lightbox.style.zIndex = "9999";
+  lightbox.innerHTML = `<img src="${src}" style="max-width:90%; max-height:90%;" onclick="this.parentElement.remove()">`;
+  document.body.appendChild(lightbox);
+}
 
-    panier.forEach((item, i) => {
-      total += item.prix;
-      liste.innerHTML += `<li>${item.article} - ${item.prix}$ <button onclick="supprimerDuPanier(${i})">Supprimer</button></li>`;
-      message += `- ${item.article} (${item.prix}$)%0A`;
-    });
+// Lecture vidéo unique
+function gererLectures(video) {
+  const videos = document.querySelectorAll("video");
+  videos.forEach(v => {
+    if (v !== video) v.pause();
+  });
+}
 
-    totalEl.textContent = total;
+// Slider accueil
+const bgImages = [
+  "images/accueil1.jpg",
+  "images/accueil2.jpg",
+  "images/accueil3.png"
+];
+let bgIndex = 0;
+setInterval(() => {
+  const section = document.getElementById("accueil");
+  section.style.backgroundImage = `url('${bgImages[bgIndex]}')`;
+  bgIndex = (bgIndex + 1) % bgImages.length;
+}, 5000);
 
-    if (panier.length === 0) {
-      compteur.style.display = "none";
-      panierInfo.style.display = "none";
-      whatsappLink.href = "#";
-      whatsappLink.onclick = () => alert("Veuillez d’abord ajouter un article");
-    } else {
-      compteur.style.display = "inline-block";
-      compteur.textContent = panier.length;
-      panierInfo.style.display = "inline-block";
-      message += `%0ATotal: ${total}$`;
-      whatsappLink.href = "https://wa.me/243816809506?text=" + message;
-      whatsappLink.onclick = null;
-    }
-  }
-
-  function supprimerDuPanier(index) {
-    panier.splice(index, 1);
-    afficherPanier();
-  }
-
-  // Lightbox image
-  function ouvrirLightbox(src) {
-    const lightbox = document.createElement("div");
-    lightbox.style.position = "fixed";
-    lightbox.style.top = "0";
-    lightbox.style.left = "0";
-    lightbox.style.width = "100%";
-    lightbox.style.height = "100%";
-    lightbox.style.background = "rgba(0,0,0,0.9)";
-    lightbox.style.display = "flex";
-    lightbox.style.alignItems = "center";
-    lightbox.style.justifyContent = "center";
-    lightbox.style.zIndex = "9999";
-    lightbox.innerHTML = `<img src="${src}" style="max-width:90%; max-height:90%;" onclick="this.parentElement.remove()">`;
-    document.body.appendChild(lightbox);
-  }
-  function ouvrirMenu() {
+// Menu mobile déroulant animé
+function ouvrirMenu() {
   document.getElementById("menuMobile").style.right = "0";
 }
 
 function fermerMenu() {
   document.getElementById("menuMobile").style.right = "-260px";
 }
-  // Lecture vidéo unique
-  function gererLectures(video) {
-    const videos = document.querySelectorAll("video");
-    videos.forEach(v => {
-      if (v !== video) v.pause();
-    });
-  }
 
-  // Slider accueil
-  const bgImages = [
-    "images/accueil1.jpg",
-    "images/accueil2.jpg",
-    "images/accueil3.png"
-  ];
-  let bgIndex = 0;
-  setInterval(() => {
-    const section = document.getElementById("accueil");
-    section.style.backgroundImage = `url('${bgImages[bgIndex]}')`;
-    bgIndex = (bgIndex + 1) % bgImages.length;
-  }, 5000);
+// Fermer menu en cliquant hors menu
+window.addEventListener("click", function(event) {
+  const menu = document.getElementById("menuMobile");
+  const toggle = document.querySelector(".menu-toggle");
+  if (menu.style.right === "0px" && !menu.contains(event.target) && event.target !== toggle) {
+    fermerMenu();
+  }
+});
+</script>
 </body>
   </html>
-                                            </script>
