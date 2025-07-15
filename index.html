@@ -402,9 +402,10 @@
   <p><strong>Total :</strong> <span id="total">0</span>$</p>
 
   <!-- Bouton WhatsApp -->
-  <a id="whatsapp-link" href="#" target="_blank" style="display:inline-flex; align-items:center; gap:8px; background:#25d366; color:white; padding:10px 15px; border-radius:30px; text-decoration:none; font-weight:bold;">
-    <img src="whatsapp.svg" alt="WhatsApp" style="width:20px; height:20px;">
-    Commander via WhatsApp
+  <a href="#" onclick="ouvrirWhatsApp()" 
+   style="display:inline-flex; align-items:center; gap:8px; background:#25d366; color:white; padding:10px 15px; border-radius:30px; text-decoration:none; font-weight:bold;">
+  <img src="whatsapp.png" alt="WhatsApp" style="width:20px; height:20px;">
+  Commander via WhatsApp
   </a>
 
   <!-- Section paiement -->
@@ -556,7 +557,16 @@
   afficherPanier(); // mettre à jour le message WhatsApp
   window.open(this.href, "_blank"); // ouvrir le lien mis à jour dans un nouvel onglet
 });
-
+  function ouvrirWhatsApp() {
+  const numero = "243816809506";
+  const message = encodeURIComponent("Bonjour, je souhaite commander des articles sur Do' Mak's Moda.");
+  
+  if (/Android/i.test(navigator.userAgent)) {
+    window.location.href = `intent://send?phone=${numero}&text=${message}#Intent;scheme=whatsapp;package=com.whatsapp;action=android.intent.action.VIEW;end`;
+  } else {
+    window.open(`https://wa.me/${numero}?text=${message}`, '_blank');
+  }
+  }
   function supprimerDuPanier(index) {
     panier.splice(index, 1);
     afficherPanier();
