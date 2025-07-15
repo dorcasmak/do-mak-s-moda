@@ -291,7 +291,36 @@ function ajouterAuPanier(article, prix) {
   document.getElementById("msg-ajout").style.display = "block";
   setTimeout(() => document.getElementById("msg-ajout").style.display = "none", 2000);
 }
+function ouvrirMedia(src) {
+  const lightbox = document.getElementById("lightbox");
+  const img = document.getElementById("lightbox-img");
+  const video = document.getElementById("lightbox-video");
 
+  if (src.endsWith(".mp4")) {
+    img.style.display = "none";
+    video.style.display = "block";
+    video.src = src;
+    video.play();
+  } else {
+    video.style.display = "none";
+    img.style.display = "block";
+    img.src = src;
+  }
+  lightbox.style.display = "flex";
+}
+
+function fermerLightbox() {
+  const lightbox = document.getElementById("lightbox");
+  const video = document.getElementById("lightbox-video");
+  video.pause();
+  lightbox.style.display = "none";
+}
+
+function pauseAutres(currentVideo) {
+  document.querySelectorAll("video").forEach(video => {
+    if (video !== currentVideo) video.pause();
+  });
+  }
 function supprimerDuPanier(index) {
   panier.splice(index, 1);
   localStorage.setItem("panier", JSON.stringify(panier));
