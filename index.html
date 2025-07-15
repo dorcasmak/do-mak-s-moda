@@ -12,12 +12,21 @@
       font-family: Arial, sans-serif;
       overflow-x: hidden;
     }
-    header, footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 1em;
-    }
+    header,footer {
+  background:#333;
+  color:white;
+  text-align:center;
+  padding:1em;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+}
+body {
+  margin:0;
+  padding-top:80px; /* pour ne pas que le contenu passe sous le header */
+}
     nav {
       display: flex;
       justify-content: center;
