@@ -36,6 +36,37 @@
     z-index: 9999;
     text-align: center;
   }
+  #floating-social {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #333;
+  padding: 10px 15px;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  z-index: 100000;
+  user-select: none;
+}
+
+#floating-social a {
+  color: white;
+  font-size: 26px;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+#floating-social a:hover {
+  transform: scale(1.3);
+}
+
+.icone-reseau-floating {
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+}
   nav {
     display: flex;
     gap: 8px;
@@ -342,9 +373,26 @@
 <footer>
   <p>© 2025 Do' Mak's Moda — Tous droits réservés.</p>
 </footer>
-
+<div id="floating-social">
+  <a href="https://www.facebook.com/toncompte" target="_blank" title="Facebook">
+    <img src="facebook.svg" alt="Facebook" class="icone-reseau-floating" />
+  </a>
+  <a href="https://www.tiktok.com/@toncompte" target="_blank" title="TikTok">🎵</a>
+  <a href="https://www.instagram.com/toncompte" target="_blank" title="Instagram">
+    <img src="instagram.svg" alt="Instagram" class="icone-reseau-floating" />
+  </a>
+  </div>
 <a href="https://wa.me/243816809506" target="_blank" style="position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 12px 15px; border-radius: 50%; font-size: 22px; text-decoration: none; z-index: 9999;">💬</a>
-
+  <div class="reseaux">
+    <a href="https://www.facebook.com/toncompte" target="_blank" title="Facebook">
+      <img src="facebook.svg" alt="Facebook" class="icone-reseau">
+    </a>
+    <a href="https://www.tiktok.com/@toncompte" target="_blank" title="TikTok">🎵</a>
+    <a href="https://www.instagram.com/toncompte" target="_blank" title="Instagram">
+      <img src="instagram.svg" alt="Instagram" class="icone-reseau">
+    </a>
+  </div>
+</footer>
 <script>
   const panier = [];
 
