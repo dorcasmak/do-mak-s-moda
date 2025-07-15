@@ -1,105 +1,131 @@
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Do' Mak's Moda | Couture & Formation Kinshasa</title>
+  <title>Do' Mak's Moda | Couture, Formation et Mode à Kinshasa</title>
   <style>
-    body { margin:0; font-family: Arial, sans-serif; overflow-x:hidden; }
-    header, footer { background:#333; color:white; text-align:center; padding:1em; }
-    nav { display:flex; justify-content:center; flex-wrap:wrap; }
-    nav a { color:white; margin:0 10px; text-decoration:none; }
-    section { padding:2em; }
-    .accueil { background:url('accueil1.jpg') center/cover no-repeat; height:400px; color:white; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; }
-    .gallery-scroll { display:flex; overflow-x:auto; gap:10px; }
-    .item { flex:0 0 auto; width:300px; cursor:pointer; }
-    .item img { width:100%; height:200px; object-fit:cover; border-radius:8px; }
-    .fixed-button, .back-to-top, #panier-icon {
-      position:fixed; z-index:1000; padding:10px; border-radius:50%; font-size:20px; text-decoration:none; }
-    .fixed-button { bottom:20px; right:20px; background:#25D366; color:white; }
-    .back-to-top { bottom:20px; left:20px; background:black; color:white; }
-    #panier-icon { top:10px; right:15px; cursor:pointer; font-size:26px; }
-    #lightbox { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:10000; justify-content:center; align-items:center; }
-    #lightbox img, #lightbox video { max-width:90%; max-height:90%; }
+    body { margin: 0; font-family: Arial, sans-serif; overflow-x: hidden; }
+    header { background: #333; color: white; text-align: center; padding: 1em; position: sticky; top: 0; z-index: 9999; }
+    nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 10px; }
+    nav a { color: white; text-decoration: none; padding: 6px 10px; background: #444; border-radius: 4px; }
+    section { padding: 2em; }
+    .accueil {
+      background: url('images/accueil1.jpg') center/cover no-repeat;
+      height: 400px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    #panier-icon {
+      position: fixed; top: 10px; right: 15px;
+      font-size: 28px; cursor: pointer; z-index: 9999;
+    }
+    #compteur {
+      position: absolute; top: -8px; right: -8px;
+      background: red; color: white; font-size: 12px;
+      padding: 2px 6px; border-radius: 50%; display: none;
+    }
+    #panier-info {
+      display: none;
+      position: fixed; top: 12px; right: 60px;
+      background: #25D366; color: white; padding: 5px 10px;
+      border-radius: 20px; font-size: 13px; z-index: 1000;
+    }
+    .message-ajout {
+      position: fixed; top: 10px; left: 50%;
+      transform: translateX(-50%);
+      background: #4CAF50; color: white; padding: 10px 20px;
+      border-radius: 5px; display: none; z-index: 9999;
+    }
   </style>
 </head>
-<body><a href="#accueil" class="back-to-top">⬆️</a>
+<body>
 
-<div id="panier-icon">🛒</div><header>
+<div id="panier-icon">🛒<span id="compteur">0</span></div>
+<div id="panier-info">📦 Voir vos articles en bas</div>
+<div class="message-ajout" id="msg-ajout">Article ajouté au panier !</div>
+
+<header>
   <h1>Do' Mak's Moda</h1>
   <nav>
     <a href="#accueil">Accueil</a>
     <a href="#apropos">À propos</a>
     <a href="#services">Services</a>
-    <a href="#apprennantes">Apprenantes</a>
     <a href="#realisations">Réalisations</a>
+    <a href="#nos-apprenantes">Nos Apprenantes</a>
     <a href="#boutique">Boutique</a>
+    <a href="#formation">Formation</a>
+    <a href="#faq">FAQ</a>
     <a href="#contact">Contact</a>
+    <a href="#panier">Panier</a>
   </nav>
-</header><section id="accueil" class="accueil">
+</header>
+
+<section id="accueil" class="accueil">
   <h2>Bienvenue chez Do' Mak's Moda</h2>
   <p>Votre maison de couture élégante et inspirante</p>
-</section><section id="apropos">
+</section>
+<section id="apropos">
   <h2>À propos</h2>
-  <p>Fondée par Dorcas Makalamba, Do' Mak's Moda propose des créations sur mesure et des formations professionnelles en haute couture à Kinshasa.</p>
-</section><section id="services">
+  <p>Fondée par Dorcas Makalamba, Do' Mak's Moda propose des créations sur mesure, des formations professionnelles et des stages en haute couture à Kinshasa.</p>
+</section>
+
+<section id="services">
   <h2>Services</h2>
   <ul>
-    <li>Formation en haute couture</li>
+    <li>Formation professionnelle en haute couture</li>
     <li>Confection de tenues sur mesure</li>
     <li>Stages spécialisés</li>
+    <li>Défilés et coaching en mode</li>
   </ul>
-</section><section id="apprennantes">
-  <h2>Nos Apprenantes</h2>
-  <div class="gallery-scroll">
-    <div class="item"><img src="appr1.jpg" alt="Apprenante 1"></div>
-    <div class="item"><img src="appr2.jpg" alt="Apprenante 2"></div>
-  </div>
-</section><section id="realisations">
+</section>
+
+<section id="realisations">
   <h2>Réalisations</h2>
   <div class="gallery-scroll">
-    <div class="item"><img src="photo1.jpg" onclick="ouvrirMedia('photo1.jpg')"></div>
-    <div class="item"><img src="mini-video1.jpg" onclick="ouvrirMedia('video1.mp4')"></div>
+    <div class="item">
+      <img src="images/photo1.jpg" alt="Réalisation" onclick="ouvrirLightbox(this.src)">
+    </div>
+    <div class="item">
+      <video controls src="videos/video22.mp4" onclick="gererLectures(this)"></video>
+    </div>
+    <div class="item">
+      <img src="images/real2.jpg" alt="Réalisation 2" onclick="ouvrirLightbox(this.src)">
+    </div>
+    <div class="item">
+      <video controls src="videos/video24.mp4" onclick="gererLectures(this)"></video>
+    </div>
   </div>
-</section><section id="boutique">
+</section>
+
+<section id="nos-apprenantes">
+  <h2>Nos Apprenantes</h2>
+  <div class="gallery-scroll">
+    <div class="item">
+      <img src="images/appr1.jpg" alt="Apprenante 1" onclick="ouvrirLightbox(this.src)">
+    </div>
+    <div class="item">
+      <img src="images/appr2.jpg" alt="Apprenante 2" onclick="ouvrirLightbox(this.src)">
+    </div>
+  </div>
+</section>
+
+<section id="boutique">
   <h2>Boutique</h2>
   <div class="gallery-scroll">
-    <div class="item"><img src="robe1.jpg" onclick="ouvrirMedia('robe1.jpg')"></div>
+    <div class="item">
+      <img src="images/soir1.png" alt="Robe soirée" onclick="ouvrirLightbox(this.src)">
+      <p>Robe soirée - 90$</p>
+      <button onclick="ajouterAuPanier('Robe soirée', 90)">Ajouter au panier</button>
+    </div>
+    <div class="item">
+      <img src="images/fete2.png" alt="Robe fête" onclick="ouvrirLightbox(this.src)">
+      <p>Robe fête - 75$</p>
+      <button onclick="ajouterAuPanier('Robe fête', 75)">Ajouter au panier</button>
+    </div>
   </div>
-</section><section id="contact">
-  <h2>Contact</h2>
-  <p>📞 +243 816 809 506</p>
-  <p>📧 dorcasmakalamba028@gmail.com</p>
-</section><div id="lightbox" onclick="fermerLightbox()">
-  <img id="lightbox-img" style="display:none;">
-  <video id="lightbox-video" style="display:none;" controls></video>
-</div><footer><p>© 2025 Do' Mak's Moda — Tous droits réservés.</p></footer><a href="https://wa.me/243816809506" class="fixed-button" target="_blank">💬</a>
-
-<script>
-function ouvrirMedia(src) {
-  const lightbox = document.getElementById("lightbox");
-  const img = document.getElementById("lightbox-img");
-  const video = document.getElementById("lightbox-video");
-  document.querySelectorAll("video").forEach(v=>v.pause());
-  if(src.endsWith(".mp4")){
-    img.style.display="none";
-    video.style.display="block";
-    video.src=src;
-    video.play();
-  }else{
-    video.pause();
-    video.style.display="none";
-    img.style.display="block";
-    img.src=src;
-  }
-  lightbox.style.display="flex";
-}
-function fermerLightbox(){
-  const lightbox = document.getElementById("lightbox");
-  document.getElementById("lightbox-img").src="";
-  const video = document.getElementById("lightbox-video");
-  video.pause();
-  video.src="";
-  lightbox.style.display="none";
-}
-</script></body>
-</html>
+</section>
