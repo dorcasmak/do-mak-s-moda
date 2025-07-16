@@ -437,7 +437,7 @@
     </a>
   </div>
 </footer>
-<script>
+  <script>
   const panier = [];
 
   // Menu mobile toggle
@@ -523,33 +523,34 @@
   // Ajouter un article au panier
   function ajouterAuPanier(article, prix) {
     panier.push({ article, prix });
+    afficherPanier();
+
+    // Animation compteur
     const compteur = document.getElementById("compteur");
-    const panierInfo = document.getElementById("panier-info");
-    const msgAjout = document.getElementById("msg-ajout");
-
-    compteur.style.display = "inline-block";
-    compteur.textContent = panier.length;
-
     compteur.classList.add("pop");
     setTimeout(() => { compteur.classList.remove("pop"); }, 300);
 
+    // Message ajout
+    const msgAjout = document.getElementById("msg-ajout");
     msgAjout.style.display = "block";
     setTimeout(() => { msgAjout.style.display = "none"; }, 2000);
-
-    panierInfo.style.display = "inline-block";
 
     // Jouer son si présent
     const son = document.getElementById("son-ajout");
     if (son) son.play();
   }
 
-  // Afficher le panier (liste + total + lien WhatsApp)
+  // Afficher le panier (liste + total + lien WhatsApp + compteur)
   function afficherPanier() {
     const liste = document.getElementById("liste-panier");
     const totalEl = document.getElementById("total");
+    const compteur = document.getElementById("compteur");
+    const panierInfo = document.getElementById("panier-info");
+
     liste.innerHTML = "";
     let total = 0;
     let message = "Bonjour, je souhaite commander :%0A";
+
     panier.forEach((item, i) => {
       total += item.prix;
       liste.innerHTML += `<li>${item.article} - ${item.prix}$ <button onclick="supprimerDuPanier(${i})">Supprimer</button></li>`;
@@ -564,20 +565,22 @@
     if (whatsappLink) {
       whatsappLink.href = `https://wa.me/243816809506?text=${message}`;
     }
+
+    // Mise à jour compteur + affichage
+    if (panier.length === 0) {
+      compteur.style.display = "none";
+      panierInfo.style.display = "none";
+    } else {
+      compteur.style.display = "inline-block";
+      panierInfo.style.display = "inline-block";
+      compteur.textContent = panier.length;
+    }
   }
 
   // Suppression d’un article du panier
   function supprimerDuPanier(index) {
     panier.splice(index, 1);
     afficherPanier();
-    const compteur = document.getElementById("compteur");
-    const panierInfo = document.getElementById("panier-info");
-    if (panier.length === 0) {
-      compteur.style.display = "none";
-      panierInfo.style.display = "none";
-    } else {
-      compteur.textContent = panier.length;
-    }
   }
 
   // Ouverture du WhatsApp avec message pré-rempli
@@ -620,6 +623,5 @@
     alert("Merci pour votre message ! Nous vous répondrons bientôt.");
     this.reset();
   });
-
 </script>
 <audio id="son-ajout" src="click.mp3" preload="auto"></audio>
