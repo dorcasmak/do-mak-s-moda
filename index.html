@@ -262,7 +262,7 @@
 </section>
 
 <section id="realisations">
-  <h2>Réalisations</h2>
+  <h2>Quelques Réalisations</h2>
   <div class="gallery" id="galleryRealisations">
     <img src="photo1.jpg" alt="Réalisation 1" onclick="ouvrirLightbox(0)" />
     <img src="photo.jpg" alt="Réalisation 2" onclick="ouvrirLightbox(2)" />
@@ -272,7 +272,7 @@
 </section>
 
 <section id="nos-apprenantes">
-  <h2>Nos Apprenantes</h2>
+  <h2>Nos Apprenantes en action</h2>
   <div class="gallery" id="galleryApprenantes">
     <img src="appr1.jpg" alt="Apprenante 1" onclick="ouvrirLightbox(4)" />
     <img src="appr2.jpg" alt="Apprenante 2" onclick="ouvrirLightbox(5)" />
@@ -280,7 +280,7 @@
 </section>
 
 <section id="boutique">
-  <h2>Boutique</h2>
+  <h2>Visiter notre Boutique</h2>
   <div class="gallery">
     <div>
       <img src="soir1.png" alt="Robe soirée" style="width:180px; height:180px;" onclick="ouvrirLightbox(6)" />
@@ -408,18 +408,32 @@
       if (e.target === lightbox) lightbox.remove();
     };
     document.body.appendChild(lightbox);
-  }
+<script>
+  const panier = [];
 
-  function changerMedia(direction) {
-    currentIndex = (currentIndex + direction + galleryItems.length) % galleryItems.length;
-    const lightbox = document.getElementById("lightbox");
-    if (lightbox) lightbox.remove();
-    ouvrirLightbox(currentIndex);
-  }
+  const menuMobile = document.getElementById("menuMobile");
+  const menuToggle = document.getElementById("menuToggle");
+  menuToggle.addEventListener("click", () => {
+    menuMobile.style.right = menuMobile.style.right === "0px" ? "-250px" : "0px";
+  });
+  document.querySelectorAll("#menuMobile a").forEach(link => {
+    link.addEventListener("click", () => { menuMobile.style.right = "-250px"; });
+  });
+  window.addEventListener("click", e => {
+    if (!menuMobile.contains(e.target) && e.target !== menuToggle && menuMobile.style.right === "0px") {
+      menuMobile.style.right = "-250px";
+    }
+  });
 
-  // Panier functions
+  // Scroll vers section panier
+  document.getElementById("panier-info").addEventListener("click", () => {
+    afficherPanier();
+    document.getElementById("panier").scrollIntoView({ behavior: "smooth" });
+  });
+
   function ajouterAuPanier(article, prix) {
     panier.push({ article, prix });
+
     const compteur = document.getElementById("compteur");
     const panierInfo = document.getElementById("panier-info");
     const msgAjout = document.getElementById("msg-ajout");
@@ -437,28 +451,43 @@
 
     const son = document.getElementById("son-ajout");
     if (son) son.play();
+
+    afficherPanier();
   }
 
   function afficherPanier() {
     const liste = document.getElementById("liste-panier");
     const totalEl = document.getElementById("total");
     const whatsappLink = document.getElementById("whatsapp-link");
+
     liste.innerHTML = "";
     let total = 0;
     let message = "Bonjour, je souhaite commander :%0A";
+
     panier.forEach((item, i) => {
       total += item.prix;
-      liste.innerHTML += `<li>${item.article} - ${item.prix}$ <button onclick="supprimerDuPanier(${i})">Supprimer</button></li>`;
+      liste.innerHTML += `<li>${item.article} - ${item.prix}$ 
+        <button onclick="supprimerDuPanier(${i})">Supprimer</button></li>`;
       message += `- ${item.article} (${item.prix}$)%0A`;
     });
+
     totalEl.textContent = total;
     message += `%0ATotal: ${total}$`;
     whatsappLink.href = `https://wa.me/243816809506?text=${message}`;
+
+    // Affichage conditionnel
+    const compteur = document.getElementById("compteur");
+    const panierInfo = document.getElementById("panier-info");
+    if (panier.length === 0) {
+      compteur.style.display = "none";
+      panierInfo.style.display = "none";
+    }
   }
 
   function supprimerDuPanier(index) {
     panier.splice(index, 1);
     afficherPanier();
+
     const compteur = document.getElementById("compteur");
     const panierInfo = document.getElementById("panier-info");
     if (panier.length === 0) {
@@ -469,6 +498,7 @@
     }
   }
 </script>
+<audio id="son-ajout" src="click.mp3" preload="auto"></audio>
 <audio id="son-ajout" src="click.mp3" preload="auto"></audio>
 </body>
 </html>
