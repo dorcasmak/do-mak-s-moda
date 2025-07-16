@@ -11,36 +11,6 @@
     overflow-x: hidden;
     scroll-behavior: smooth;
   }
-  #paiement {
-    background: url('billets.png') no-repeat center center;
-    background-size: cover;
-    color: white;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    position: relative;
-    overflow: hidden;
-  }
-  #paiement::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.25);
-    z-index: 0;
-  }
-  #paiement h3, #paiement ul {
-    position: relative;
-    z-index: 1;
-  }
-  #paiement ul {
-    list-style: none;
-    padding-left: 0;
-  }
-  #paiement li {
-    margin-bottom: 8px;
-    font-size: 16px;
-  }
   @keyframes pop {
     0% { transform: scale(1); }
     50% { transform: scale(1.3); }
@@ -65,34 +35,6 @@
     top: 0;
     z-index: 9999;
     text-align: center;
-  }
-  #floating-social {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #333;
-    padding: 10px 15px;
-    border-radius: 50px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    z-index: 100000;
-    user-select: none;
-  }
-  #floating-social a {
-    color: white;
-    font-size: 26px;
-    text-decoration: none;
-    transition: transform 0.3s ease;
-  }
-  #floating-social a:hover {
-    transform: scale(1.3);
-  }
-  .icone-reseau-floating {
-    width: 28px;
-    height: 28px;
-    vertical-align: middle;
   }
   nav {
     display: flex;
@@ -261,21 +203,9 @@
     z-index: 10000;
     user-select: none;
   }
-  .reseaux {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 1.5em 0;
-  }
-  .icone-reseau {
-    width: 28px;
-    height: 28px;
-    vertical-align: middle;
-  }
 </style>
 </head>
 <body>
-
 <header>
   <div id="panier-icon">
     🛒 <span id="compteur">0</span>
@@ -336,17 +266,16 @@
   <div class="gallery" id="galleryRealisations">
     <img src="photo1.jpg" alt="Réalisation 1" onclick="ouvrirLightbox(0)" />
     <img src="photo.jpg" alt="Réalisation 2" onclick="ouvrirLightbox(2)" />
-    <img src="app 2.jpg" alt="Réalisation 8" onclick="ouvrirLightbox(9)" />
-    <img src="photo4.jpg" alt="Formation à l'atelier 1" onclick="ouvrirLightbox(4)" />
-    <img src="appr 2.jpg" alt="Apprenante 2" onclick="ouvrirLightbox(5)" />
+    <video src="video24.mp4" onclick="ouvrirLightbox(3)"></video>
+    <video src="video22.mp4" onclick="ouvrirLightbox(1)"></video>
   </div>
 </section>
 
 <section id="nos-apprenantes">
-  <h2>Nos Apprenantes en Action</h2>
+  <h2>Nos Apprenantes</h2>
   <div class="gallery" id="galleryApprenantes">
-    <video src="video24.mp4" onclick="ouvrirLightbox(3)" controls muted></video>
-    <video src="video25.mp4" onclick="ouvrirLightbox(1)" controls muted></video>
+    <img src="appr1.jpg" alt="Apprenante 1" onclick="ouvrirLightbox(4)" />
+    <img src="appr2.jpg" alt="Apprenante 2" onclick="ouvrirLightbox(5)" />
   </div>
 </section>
 
@@ -359,14 +288,9 @@
       <button onclick="this.classList.add('bounce'); setTimeout(()=>this.classList.remove('bounce'),200); ajouterAuPanier('Robe soirée',90)">Ajouter au panier</button>
     </div>
     <div>
-      <img src="Robe de fête 2.png" alt="Robe fête" style="width:180px; height:180px;" onclick="ouvrirLightbox(7)" />
+      <img src="fete2.png" alt="Robe fête" style="width:180px; height:180px;" onclick="ouvrirLightbox(7)" />
       <p>Robe fête - 75$</p>
       <button onclick="this.classList.add('bounce'); setTimeout(()=>this.classList.remove('bounce'),200); ajouterAuPanier('Robe fête',75)">Ajouter au panier</button>
-    </div>
-    <div>
-      <img src="voile1.png" alt="Robe pour mariage" style="width:180px; height:180px;" onclick="ouvrirLightbox(8)" />
-      <p>Robe mariage - 370$</p>
-      <button onclick="this.classList.add('bounce'); setTimeout(()=>this.classList.remove('bounce'),200); ajouterAuPanier('Robe pour mariage',370)">Ajouter au panier</button>
     </div>
   </div>
 </section>
@@ -374,7 +298,7 @@
 <section id="formation">
   <h2>Formation</h2>
   <p>Normale (6 mois) ou Accélérée (2 mois)</p>
-  <iframe src="https://calendar.google.com/calendar/embed?src=fr.drc%23holiday%40group.v.calendar.google.com&amp;ctz=Africa%2FLubumbashi" width="100%" height="400" style="border:none;"></iframe>
+  <iframe src="https://calendar.google.com/calendar/embed?src=fr.drc%23holiday%40group.v.calendar.google.com&amp;ctz=Africa%2FLubumbashi" width="100%" height="400"></iframe>
 </section>
 
 <section id="faq">
@@ -405,39 +329,16 @@
   <h2>Mon Panier</h2>
   <ul id="liste-panier"></ul>
   <p><strong>Total :</strong> <span id="total">0</span>$</p>
-
-  <!-- Bouton WhatsApp -->
-  <a href="#" id="whatsapp-link" onclick="ouvrirWhatsApp()" 
-   style="display:inline-flex; align-items:center; gap:8px; background:#25d366; color:white; padding:10px 15px; border-radius:30px; text-decoration:none; font-weight:bold;">
-    <img src="whatsapp.png" alt="WhatsApp" style="width:20px; height:20px;">
-    Commander via WhatsApp
-  </a>
-
-  <!-- Section paiement -->
-  <div id="paiement">
-    <h3>Moyens de paiement :</h3>
-    <ul>
-      <li>📱 <strong>M-Pesa :</strong> +243 816 809 506</li>
-      <li>📞 <strong>Airtel Money :</strong> +243 890 000 000</li>
-      <li>💬 <strong>WhatsApp :</strong> passez votre commande via le bouton ci-dessus</li>
-      <li>🚚 <strong>Paiement à la livraison :</strong> disponible à Kinshasa</li>
-    </ul>
-  </div>
+  <a id="whatsapp-link" href="#" target="_blank">Commander via WhatsApp</a>
 </section>
 
 <footer>
   <p>© 2025 Do' Mak's Moda — Tous droits réservés.</p>
-  <div class="reseaux">
-    <a href="https://www.facebook.com/toncompte" target="_blank" title="Facebook">
-      <img src="facebook.svg" alt="Facebook" class="icone-reseau">
-    </a>
-    <a href="https://www.tiktok.com/@toncompte" target="_blank" title="TikTok" style="font-size:28px; line-height:28px; display:inline-block;">🎵</a>
-    <a href="https://www.instagram.com/toncompte" target="_blank" title="Instagram">
-      <img src="instagram.svg" alt="Instagram" class="icone-reseau">
-    </a>
-  </div>
 </footer>
-  <script>
+
+<a href="https://wa.me/243816809506" target="_blank" style="position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 12px 15px; border-radius: 50%; font-size: 22px; text-decoration: none; z-index: 9999;">💬</a>
+
+<script>
   const panier = [];
 
   // Menu mobile toggle
@@ -447,27 +348,25 @@
     menuMobile.style.right = menuMobile.style.right === "0px" ? "-250px" : "0px";
   });
 
-  // Fermer menu mobile au clic sur un lien
   document.querySelectorAll("#menuMobile a").forEach((link) => {
     link.addEventListener("click", () => {
       menuMobile.style.right = "-250px";
     });
   });
 
-  // Fermer menu mobile au clic hors menu
   window.addEventListener("click", (e) => {
     if (!menuMobile.contains(e.target) && e.target !== menuToggle && menuMobile.style.right === "0px") {
       menuMobile.style.right = "-250px";
     }
   });
 
-  // Affichage du panier au clic sur "Voir votre panier"
+  // Panier info click
   document.getElementById("panier-info").addEventListener("click", () => {
     afficherPanier();
     document.getElementById("panier").scrollIntoView({ behavior: "smooth" });
   });
 
-  // Slider accueil - changement automatique des images d'arrière-plan
+  // Slider accueil
   const bgImages = ["accueil1.jpg", "accueil2.jpg", "accueil3.png"];
   let bgIndex = 0;
   setInterval(() => {
@@ -478,15 +377,13 @@
   // Galerie & Lightbox
   const galleryItems = [
     { type: "image", src: "photo1.jpg" },
-    { type: "video", src: "video25.mp4" },
+    { type: "video", src: "video22.mp4" },
     { type: "image", src: "photo.jpg" },
     { type: "video", src: "video24.mp4" },
-    { type: "image", src: "app 2.jpg" },
-    { type: "image", src: "photo4.jpg" },
+    { type: "image", src: "appr1.jpg" },
+    { type: "image", src: "appr2.jpg" },
     { type: "image", src: "soir1.png" },
-    { type: "image", src: "Robe de fête 2.png" },
-    { type: "image", src: "voile1.png" },
-    { type: "image", src: "app 2.jpg" },
+    { type: "image", src: "fete2.png" },
   ];
   let currentIndex = 0;
 
@@ -520,108 +417,58 @@
     ouvrirLightbox(currentIndex);
   }
 
-  // Ajouter un article au panier
+  // Panier functions
   function ajouterAuPanier(article, prix) {
     panier.push({ article, prix });
-    afficherPanier();
-
-    // Animation compteur
     const compteur = document.getElementById("compteur");
+    const panierInfo = document.getElementById("panier-info");
+    const msgAjout = document.getElementById("msg-ajout");
+
+    compteur.style.display = "inline-block";
+    compteur.textContent = panier.length;
+
     compteur.classList.add("pop");
     setTimeout(() => { compteur.classList.remove("pop"); }, 300);
 
-    // Message ajout
-    const msgAjout = document.getElementById("msg-ajout");
     msgAjout.style.display = "block";
     setTimeout(() => { msgAjout.style.display = "none"; }, 2000);
 
-    // Jouer son si présent
+    panierInfo.style.display = "inline-block";
+
     const son = document.getElementById("son-ajout");
     if (son) son.play();
   }
 
-  // Afficher le panier (liste + total + lien WhatsApp + compteur)
   function afficherPanier() {
     const liste = document.getElementById("liste-panier");
     const totalEl = document.getElementById("total");
-    const compteur = document.getElementById("compteur");
-    const panierInfo = document.getElementById("panier-info");
-
+    const whatsappLink = document.getElementById("whatsapp-link");
     liste.innerHTML = "";
     let total = 0;
     let message = "Bonjour, je souhaite commander :%0A";
-
     panier.forEach((item, i) => {
       total += item.prix;
       liste.innerHTML += `<li>${item.article} - ${item.prix}$ <button onclick="supprimerDuPanier(${i})">Supprimer</button></li>`;
       message += `- ${item.article} (${item.prix}$)%0A`;
     });
     totalEl.textContent = total;
-
     message += `%0ATotal: ${total}$`;
-
-    // Met à jour le lien WhatsApp
-    const whatsappLink = document.getElementById("whatsapp-link");
-    if (whatsappLink) {
-      whatsappLink.href = `https://wa.me/243816809506?text=${message}`;
-    }
-
-    // Mise à jour compteur + affichage
-    if (panier.length === 0) {
-      compteur.style.display = "none";
-      panierInfo.style.display = "none";
-    } else {
-      compteur.style.display = "inline-block";
-      panierInfo.style.display = "inline-block";
-      compteur.textContent = panier.length;
-    }
+    whatsappLink.href = `https://wa.me/243816809506?text=${message}`;
   }
 
-  // Suppression d’un article du panier
   function supprimerDuPanier(index) {
     panier.splice(index, 1);
     afficherPanier();
-  }
-
-  // Ouverture du WhatsApp avec message pré-rempli
-  function ouvrirWhatsApp() {
-    const numero = "243816809506";
-    let message = "";
-
-    if (panier.length === 0) {
-      message = encodeURIComponent("Bonjour, je souhaite commander des articles sur Do' Mak's Moda.");
-    } else {
-      let msg = "Bonjour, je souhaite commander :\n";
-      panier.forEach(item => {
-        msg += `- ${item.article} (${item.prix}$)\n`;
-      });
-      msg += `Total: ${panier.reduce((acc, i) => acc + i.prix, 0)}$`;
-      message = encodeURIComponent(msg);
-    }
-
-    // Adaptation pour Android et autres plateformes
-    if (/Android/i.test(navigator.userAgent)) {
-      window.location.href = `intent://send?phone=${numero}&text=${message}#Intent;scheme=whatsapp;package=com.whatsapp;action=android.intent.action.VIEW;end`;
-    } else {
-      window.open(`https://wa.me/${numero}?text=${message}`, '_blank');
-    }
-  }
-
-  // Initialisation : cacher compteur si panier vide
-  window.onload = () => {
     const compteur = document.getElementById("compteur");
     const panierInfo = document.getElementById("panier-info");
     if (panier.length === 0) {
       compteur.style.display = "none";
       panierInfo.style.display = "none";
+    } else {
+      compteur.textContent = panier.length;
     }
-  };
-
-  // Éviter rechargement formulaire contact
-  document.querySelector("#contact form").addEventListener("submit", function(e) {
-    e.preventDefault();
-    alert("Merci pour votre message ! Nous vous répondrons bientôt.");
-    this.reset();
-  });
+  }
 </script>
 <audio id="son-ajout" src="click.mp3" preload="auto"></audio>
+</body>
+</html>
