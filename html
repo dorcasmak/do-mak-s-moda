@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Do' Mak's Moda | Couture et Formation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ====== Barre de navigation ====== -->
+<header>
+  <nav class="navbar">
+    <div class="logo">Do' Mak's Moda</div>
+    <div class="menu-toggle" id="menuToggle">&#9776;</div>
+    <ul class="nav-links" id="menuMobile">
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#a-propos">À propos</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#realisations">Réalisations</a></li>
+      <li><a href="#apprenantes">Nos Apprenantes</a></li>
+      <li><a href="#boutique">Boutique</a></li>
+      <li><a href="#formation">Formation</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#panier" id="panier-info">Panier 🛒 <span id="compteur-panier">0</span></a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ====== Message de sélection d'article ====== -->
+<div id="message-selection" class="message-selection">🎉 Article ajouté ! Voir votre panier en bas.</div>
+
+<!-- ====== Accueil ====== -->
+<section id="accueil">
+  <h1>Bienvenue chez Do' Mak's Moda</h1>
+  <p>Découvrez la mode autrement</p>
+</section>
+
+<!-- ====== À propos ====== -->
+<section id="a-propos">
+  <h2>À propos</h2>
+  <p>Nous formons et habillons avec passion !</p>
+</section>
+
+<!-- ====== Services ====== -->
+<section id="services">
+  <h2>Nos Services</h2>
+  <ul>
+    <li>Couture sur mesure</li>
+    <li>Formation professionnelle</li>
+    <li>Conseil en style</li>
+  </ul>
+</section>
+
+<!-- ====== Réalisations ====== -->
+<section id="realisations">
+  <h2>Réalisations</h2>
+  <div class="galerie">
+    <img src="img/robe1.jpg" alt="Robe 1" class="media-lightbox" />
+    <img src="img/robe2.jpg" alt="Robe 2" class="media-lightbox" />
+    <video src="videos/demo1.mp4" controls class="media-lightbox"></video>
+  </div>
+</section>
+
+<!-- ====== Nos Apprenantes ====== -->
+<section id="apprenantes">
+  <h2>Nos Apprenantes</h2>
+  <div class="apprenantes-galerie">
+    <img src="img/apprenante1.jpg" alt="Apprenante 1" class="media-lightbox" />
+    <img src="img/apprenante2.jpg" alt="Apprenante 2" class="media-lightbox" />
+  </div>
+</section>
+
+<!-- ====== Boutique ====== -->
+<section id="boutique">
+  <h2>Boutique</h2>
+  <div class="produits">
+    <div class="produit">
+      <img src="img/article1.jpg" alt="Article 1">
+      <h3>Robe Wax</h3>
+      <p>25.000 FCFA</p>
+      <button onclick="ajouterAuPanier('Robe Wax', 25000)">Ajouter</button>
+    </div>
+    <div class="produit">
+      <img src="img/article2.jpg" alt="Article 2">
+      <h3>Tenue mixte</h3>
+      <p>30.000 FCFA</p>
+      <button onclick="ajouterAuPanier('Tenue mixte', 30000)">Ajouter</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====== Formation ====== -->
+<section id="formation">
+  <h2>Formation</h2>
+  <p>Inscriptions ouvertes ! Rejoignez notre école de couture professionnelle.</p>
+</section>
+
+<!-- ====== FAQ ====== -->
+<section id="faq">
+  <h2>Foire aux questions</h2>
+  <details>
+    <summary>Quels sont les modes de paiement acceptés ?</summary>
+    <p>Mobile money, espèces, et paiement à la livraison.</p>
+  </details>
+  <details>
+    <summary>Combien dure une formation ?</summary>
+    <p>3 à 6 mois selon le niveau choisi.</p>
+  </details>
+</section>
+
+<!-- ====== Contact ====== -->
+<section id="contact">
+  <h2>Contact</h2>
+  <p>📞 Téléphone : +243 000 000 000</p>
+  <p>📧 Email : contact@domaksmoda.com</p>
+  <a href="https://wa.me/243000000000?text=Bonjour, je veux commander !" target="_blank" class="whatsapp-btn">Commander via WhatsApp</a>
+</section>
+
+<!-- ====== Panier ====== -->
+<section id="panier">
+  <h2>🛒 Votre Panier</h2>
+  <div id="contenu-panier"></div>
+  <button onclick="viderPanier()">Vider le panier</button>
+</section>
+
+<!-- ====== Lightbox ====== -->
+<div id="lightbox" class="lightbox">
+  <span class="close-lightbox" onclick="fermerLightbox()">&times;</span>
+  <div class="lightbox-content">
+    <img id="lightbox-img" />
+    <video id="lightbox-video" controls></video>
+  </div>
+</div>
+
+<!-- ====== Script ====== -->
+<script src="script.js"></script>
+</body>
+</html> 
