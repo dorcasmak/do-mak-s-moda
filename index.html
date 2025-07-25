@@ -441,6 +441,18 @@ section {
       <p>Robe voile- 370$</p>
       <button onclick="this.classList.add('bounce'); setTimeout(()=>this.classList.remove('bounce'),200); ajouterAuPanier('Robe pour mariage',370)">Ajouter au panier</button>
         </div>
+        <div>
+          <img src="fil1.png" alt="Robe pour mariage" style="width:180px; height:180px;" onclick="ouvrirLightbox(10)" />
+      <p>Robe à Fil Élastique- 20$</p>
+      <button onclick="this.classList.add('bounce'); setTimeout(()=>this.classList.remove('bounce'),200); ajouterAuPanier('Robe pour mariage',370)">Ajouter au panier</button>
+        
+        </div>
+    <div>
+          <img src="fil2.png" alt="Robe pour mariage" style="width:180px; height:180px;" onclick="ouvrirLightbox(11)" />
+      <p>Robe à Fil Élastique- 20$</p>
+      <button onclick="this.classList.add('bounce'); setTimeout(()=>this.classList.remove('bounce'),200); ajouterAuPanier('Robe pour mariage',370)">Ajouter au panier</button>
+        
+    </div>
   </div>
 </section>
 
@@ -551,7 +563,11 @@ section {
     { type: "image", src: "Robe de fête 2.png" },
     { type: "image", src: "voile1.png" },
     { type: "image", src: "app 2.jpg" },
+    { type: "image", src: "fil1.png" },
+    { type: "image", src: "fil2.png" },
   ];
+  ];
+  
   let currentIndex = 0;
 
   function ouvrirLightbox(index) {
