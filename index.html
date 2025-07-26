@@ -646,6 +646,15 @@ section {
     if (lightbox) lightbox.remove();
     ouvrirLightbox(currentIndex);
   }
+  const videos = document.querySelectorAll("video");
+  videos.forEach((video) => {
+    video.addEventListener("play", () => {
+      videos.forEach((other) => {
+        if (other !== video) other.pause();
+      });
+    });
+  });
+
 
   // Panier functions
   function ajouterAuPanier(article, prix) {
