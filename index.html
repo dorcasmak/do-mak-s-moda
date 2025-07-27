@@ -408,8 +408,9 @@ section {
   <h2>Réalisations</h2>
   <div class="gallery" id="galleryRealisations">
     <img src="photo1.jpg" alt="Réalisation 1" onclick="ouvrirLightbox(0)" />
+    <img src="col.jpg" alt="Réalisation 1" onclick="ouvrirLightbox(1)" />
     <img src="photo.jpg" alt="Réalisation 2" onclick="ouvrirLightbox(2)" />
-    <img src="app 2.jpg" alt="Réalisation 8" onclick="ouvrirLightbox(9)" />
+    <img src="app 2.jpg" alt="Réalisation 8" onclick="ouvrirLightbox(3)" />
     <img src="photo4.jpg" alt="Formation à l'atelier 1" onclick="ouvrirLightbox(4)" />
     <img src="app 1.jpg" alt="Apprenante 2" onclick="ouvrirLightbox(5)" />
   
@@ -419,11 +420,11 @@ section {
 <section id="nos-apprenantes">
   <h2>Nos Apprenantes en Action</h2>
   <div class="gallery" id="galleryApprenantes">
-    <video src="video25.mp4" controls preload="metadata" onclick="ouvrirLightbox(1)"></video>
-    <video src="video24.mp4" controls preload="metadata" onclick="ouvrirLightbox(3)"></video>
-    <video src="action1.mp4" controls preload="metadata" onclick="ouvrirLightbox(12)"></video>
-    <video src="action2.mp4" controls preload="metadata" onclick="ouvrirLightbox(13)"></video>
-    <video src="action3.mp4" controls preload="metadata" onclick="ouvrirLightbox(14)"></video>
+    <video src="video25.mp4" controls preload="metadata" onclick="ouvrirLightbox(6)"></video>
+    <video src="video24.mp4" controls preload="metadata" onclick="ouvrirLightbox(7)"></video>
+    <video src="action1.mp4" controls preload="metadata" onclick="ouvrirLightbox(8)"></video>
+    <video src="action2.mp4" controls preload="metadata" onclick="ouvrirLightbox(9)"></video>
+    <video src="action3.mp4" controls preload="metadata" onclick="ouvrirLightbox(10)"></video>
     
     </div>
 </section>
@@ -432,33 +433,33 @@ section {
   <h2>Boutique</h2>
   <div class="gallery">
     <div>
-      <img src="soir1.png" alt="Robe soirée" style="width:180px; height:180px;" onclick="ouvrirLightbox(6)" />
+      <img src="soir1.png" alt="Robe soirée" style="width:180px; height:180px;" onclick="ouvrirLightbox(11)" />
       <p>Robe soirée - 130$</p>
       <button onclick="this.classList.add('bounce'); setTimeout(()=>this.classList.remove('bounce'),200); ajouterAuPanier('Robe soirée',90)">Ajouter au panier</button>
     </div>
     <div>
-      <img src="Robe de fête 2.png" alt="Robe fête" style="width:180px; height:180px;" onclick="ouvrirLightbox(7)" />
+      <img src="Robe de fête 2.png" alt="Robe fête" style="width:180px; height:180px;" onclick="ouvrirLightbox(12)" />
       <p>Robe soirée- 80$</p>
       <button onclick="this.classList.add('bounce'); setTimeout(()=>this.classList.remove('bounce'),200); ajouterAuPanier('Robe fête',75)">Ajouter au panier</button>
     </div>
         <div>
-      <img src="voile1.png" alt="Robe pour mariage" style="width:180px; height:180px;" onclick="ouvrirLightbox(8)" />
+      <img src="voile1.png" alt="Robe pour mariage" style="width:180px; height:180px;" onclick="ouvrirLightbox(13)" />
       <p>Robe voile- 370$</p>
       <button onclick="this.classList.add('bounce'); setTimeout(()=>this.classList.remove('bounce'),200); ajouterAuPanier('Robe pour mariage',370)">Ajouter au panier</button>
         </div>
     <div>
-    <img src="fil1.png" alt="Fil à coudre 1" style="width:180px; height:180px;" onclick="ouvrirLightbox(10)" />
+    <img src="fil1.png" alt="Fil à coudre 1" style="width:180px; height:180px;" onclick="ouvrirLightbox(14)" />
     <p>Robe à fil Élastique-50$</p>
     <button onclick="this.classList.add('bounce'); setTimeout(()=>this.classList.remove('bounce'),200); ajouterAuPanier('Robe à fil Élastique', 20$)">Ajouter au panier</button>
   </div>
 
   <div>
-    <img src="fil2.png" alt="Fil à coudre 2" style="width:180px; height:180px;" onclick="ouvrirLightbox(11)" />
+    <img src="fil2.png" alt="Fil à coudre 2" style="width:180px; height:180px;" onclick="ouvrirLightbox(15)" />
     <p>Robe à fil Élastique 2-50$</p>
     <button onclick="this.classList.add('bounce'); setTimeout(()=>this.classList.remove('bounce'),200); ajouterAuPanier('Robe à fil Élastique 2', 2000)">Ajouter au panier</button>
   </div>
     <div>
-    <img src="placage.png" alt="Robe placage" style="width:180px; height:180px;" onclick="ouvrirLightbox(15)" />
+    <img src="placage.png" alt="Robe placage" style="width:180px; height:180px;" onclick="ouvrirLightbox(16)" />
     <p>Robe Placage-75$</p>
     <button onclick="this.classList.add('bounce'); setTimeout(()=>this.classList.remove('bounce'),200); ajouterAuPanier('Robe placage', 2000)">Ajouter au panier</button>
     </div>
@@ -605,20 +606,21 @@ section {
   // Galerie & Lightbox
   const galleryItems = [
     { type: "image", src: "photo1.jpg" },
-    { type: "video", src: "video25.mp4" },
+    { type: "image", src: "col.jpg" },
     { type: "image", src: "photo.jpg" },
-    { type: "video", src: "video24.mp4" },
+    { type: "image", src: "photo3.jpg" },
     { type: "image", src: "app 2.jpg" },
     { type: "image", src: "photo4.jpg" },
-    { type: "image", src: "soir1.png" },
-    { type: "image", src: "Robe de fête 2.png" },
-    { type: "image", src: "voile1.png" },
-    { type: "image", src: "app 2.jpg" },
-    { type: "image", src: "fil1.png" },
-    { type: "image", src: "fil2.png" },
+    { type: "image", src: "app 1.jpg"},
+    { type: "video", src: "video25.mp4"},
     { type: "video", src: "action1.mp4" },
     { type: "video", src: "action2.mp4" },
     { type: "video", src: "action3.mp4" },
+    { type: "image", src: "soir1.png" },
+    { type: "image", src: "Robe de fête.png" },
+    { type: "image", src: "voile1.png" },
+    { type: "image", src: "fil1.png" },
+    { type: "image", src: "fil2..png" },
     { type: "image", src: "placage.png" },
     
   ];
